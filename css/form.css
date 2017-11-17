@@ -1,0 +1,185 @@
+* {
+  margin:10px;
+  padding:0px;
+}
+
+.firstPage {
+  border:1px solid black;
+}
+
+.firstLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border-bottom:1px solid black;
+}
+
+.title{
+  width:20%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.title label, input {
+  width:50%
+}
+
+.firstName {
+  width:40%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.surname {
+  width:40%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.firstName input, .surname input {
+  width:65%;
+}
+
+.secondLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border-bottom:1px solid black;
+}
+
+.address {
+  width:100%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.address input {
+  width:85%;
+}
+
+.thirdLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border-bottom:1px solid black;
+}
+
+.contactNumber, .eaddress {
+  width:50%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.thirdLine input {
+  width:65%;
+}
+
+.fourthLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border-bottom:1px solid black;
+}
+
+.emergContac {
+  width:100%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.emergContac input {
+  width:65%;
+}
+
+.fifthLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border-bottom:1px solid black;
+}
+
+.workReq {
+  width:60%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.workReq input {
+  width:60%;
+}
+
+.CV {
+  width:40%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.sixthLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border-bottom:1px solid black;
+}
+
+.quali {
+  width:100%;
+  margin:0px;
+  border:1px solid black;
+}
+
+.quali input {
+  width:85%;
+}
+
+.seventhLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+}
+
+.typeOfWork {
+  width:100%;
+  margin:0px;
+  padding:0px;
+  border-right:1px solid black;
+  border-left:1px solid black;
+}
+
+.typeOfWork input {
+  padding:5px;
+  width:5%;
+}
+
+.eigthLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+}
+
+.company {
+  width:100%;
+  margin:0px;
+  border-right:1px solid black;
+  border-left:1px solid black;
+  border-bottom:1px solid black;
+}
+
+.company input {
+  width:85%;
+}

@@ -1,34 +1,92 @@
 <!DOCTYPE HTML>
-
 <html lang=en>
   <head>
     <title> Acorn Recuritment </title>
+    <link rel="stylesheet" type="text/css" href="css\form.css">
   </head>
 
   <body>
     <main>
       <h1>Limited Company Contractor Registration Form </h1>
       <form>
-        Title:<br><input type="text" name="title"><br>
-        First Name<br><input type="text" name="firstName"><br>
-        Surname<br><input type="text" name="Surname"><br>
-        Address <br> JS post code lookup <br>
-        Contact Number<br><input type="number" name="number"><br>
-        Emergency Contact Name<br><input type="text" name="ECname"><br>
-        Emergency Contact number<br><input type="number" name="ECnumber"><br>
-        <br><br><br>
-        Type of Work Required<br><input type="text" name="WorkReq"><br>
-        Attach CV<br><input type="file" name="CV"><br>
-        Qualifications<br><input type="text" name="Quali"><br>
-        I will be Working via a <br>
-        <input type="radio" name="WorkAs" value="Umbrella Company"> Umbrella Company
-        <input type="radio" name="WorkAs" value="Personal Services Company"> Personal Services Company <br>
-        Name of Company <br><input type="text" name="NameOfCompany"><br>
-        <br><br><br>
-
-
-
-
+        <section class="firstPage">
+          <div class="firstLine">
+            <div class="title">
+              <label>Title:</label>
+              <input type="text" name="title">
+            </div>
+            <div class="firstName">
+              <label>First Name</label>
+              <input type="text" name="firstName">
+            </div>
+            <div class="surname">
+              <label>Surname</label>
+              <input type="text" name="surname">
+            </div>
+          </div>
+          <div class="secondLine">
+            <div class="address">
+              <label>Address</label>
+              <input type="text" name="address">
+            </div>
+          </div>
+          <div class="thirdLine">
+            <div class="contactNumber">
+              <label>Contact Number</label>
+              <input type="number" name="number">
+            </div>
+            <div class="eaddress">
+              <label>Email Address</label>
+              <input type="text" name="eaddress">
+            </div>
+          </div>
+          <div class="fourthLine">
+            <div class="emergContac">
+              <label>Emergency Contact Name / Number</label>
+              <input type="text" name="emergContac">
+            </div>
+          </div>
+          <div class="fifthLine">
+            <div class="workReq">
+              <label>Type of Work Required</label>
+              <input type="text" name="workReq">
+            </div>
+            <iv class="CV">
+              <label>Attach CV</label>
+              <input type="file" name="CV">
+            </div>
+          </div>
+          <div class="sixthLine">
+            <div class="quali">
+              <label>Qualifications</label>
+              <input type="text" name="quali">
+            </div>
+          </div>
+          <div class="seventhLine">
+            <div class="typeOfWork">
+              <label>I will be Working via an Umbrella Company</label>
+              <input type="radio" name="umbrella" value="Umbrella Company">
+              <label>a Personal Services Company</label>
+              <input type="radio" name="personalService" value="Personal Services Company">
+              <label>(tick as appropriate)</label>
+            </div>
+          </div>
+          <div class="eigthLine">
+            <div class="company">
+              <label>Name of Company</label>
+              <input type="text" name="NameOfCompany">
+            </div>
+          </div>
+        </section>
+        <section class="secondPage"> <!--Eventually will be made into a second page entirely-->
+          Are you eligible to work in the UK?
+          <input type="radio" name="eligibility" value="Yes"> Yes
+          <input type="radio" name="eligibility" value="No"> No
+          Please detail which documents you will provide:<input type="text" name="eligibilityDocs">
+          Do you have a curreent UK driving license?
+          <input type="radio" name="licence" value="Yes"> Yes
+          <input type="radio" name="licence" value="No"> No
+        </section>
       </form>
     </main>
   </body>
