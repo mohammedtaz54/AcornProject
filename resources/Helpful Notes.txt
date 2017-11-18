@@ -1,0 +1,7 @@
+Helpful Notes
+
+Info on submitting the form and sending it via php
+https://stackoverflow.com/questions/8239782/how-to-create-an-email-form-that-can-send-email-using-html
+
+API to add postcode Lookup
+https://craftyclicks.co.uk/docs/postcode-lookup/#postcode-lookup-api
