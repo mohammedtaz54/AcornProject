@@ -1,7 +1,6 @@
 * {
   margin:10px;
   padding:0px;
-  box-sizing: border-box;
 }
 
 .firstPage {
@@ -18,30 +17,43 @@
 }
 
 .title{
-  padding:5px;
-  width:20%;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  width:40%;
   margin:0px;
-  border:1px solid black;
-}
-
-.title label, input {
-  width:50%;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .firstName {
+  display: -webkit-inline-flex;
+  display: inline-flex;
   width:40%;
   margin:0px;
-  border:1px solid black;
+  border-top: 1px solid black;
 }
 
 .surname {
+  display: -webkit-inline-flex;
+  display: inline-flex;
   width:40%;
   margin:0px;
-  border:1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
 }
 
-.firstName input, .surname input {
-  width:65%;
+.question  {
+  width:50%;
+  margin:0px;
+  padding:0px;
+  border-right:1px solid black;
+  border-left:1px solid black;
+  background-color: lightgrey;
+}
+
+.answer {
+  width:50%;
+  margin:0px;
 }
 
 .secondLine {
@@ -53,14 +65,19 @@
   border-bottom:1px solid black;
 }
 
-.address {
-  width:100%;
+.addressQuestion {
+  width:30%;
   margin:0px;
-  border:1px solid black;
+  padding:0px;
+  border-right:1px solid black;
+  border-left:2px solid black;
+  background-color: lightgrey;
 }
 
-.address input {
-  width:85%;
+.addressAnswer {
+  width:70%;
+  margin:0px;
+  border-right: 1px solid black;
 }
 
 .thirdLine {
@@ -72,14 +89,20 @@
   border-bottom:1px solid black;
 }
 
-.contactNumber, .eaddress {
+.contactNumber{
+  display: -webkit-inline-flex;
+  display: inline-flex;
   width:50%;
   margin:0px;
-  border:1px solid black;
+  border-left:1px solid black;
 }
 
-.thirdLine input {
-  width:65%;
+.emailAddress {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  width:50%;
+  margin:0px;
+  border-right: 1px solid black;
 }
 
 .fourthLine {
@@ -91,14 +114,20 @@
   border-bottom:1px solid black;
 }
 
-.emergContac {
-  width:100%;
+.dateOfBirth{
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  width:50%;
   margin:0px;
-  border:1px solid black;
+  border-left:1px solid black;
 }
 
-.emergContac input {
-  width:65%;
+.nationalInsurance {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  width:50%;
+  margin:0px;
+  border-right: 1px solid black;
 }
 
 .fifthLine {
@@ -110,20 +139,19 @@
   border-bottom:1px solid black;
 }
 
-.workReq {
-  width:60%;
+.contactQuestion {
+  width:35%;
   margin:0px;
-  border:1px solid black;
+  padding:0px;
+  border-right:1px solid black;
+  border-left:2px solid black;
+  background-color: lightgrey;
 }
 
-.workReq input {
-  width:60%;
-}
-
-.CV {
-  width:40%;
+.contactAnswer {
+  width:65%;
   margin:0px;
-  border:1px solid black;
+  border-right: 1px solid black;
 }
 
 .sixthLine {
@@ -133,6 +161,45 @@
   padding:0px;
   width:100%;
   border-bottom:1px solid black;
+}
+
+.workQuestion {
+  width:35%;
+  margin:0px;
+  padding:0px;
+  border-right:1px solid black;
+  border-left:2px solid black;
+  background-color: lightgrey;
+}
+
+.workAnswer {
+  width:65%;
+  margin:0px;
+  border-right: 1px solid black;
+}
+
+.seventhLine {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border-bottom:1px solid black;
+}
+
+.qualiQuestion {
+  width:35%;
+  margin:0px;
+  padding:0px;
+  border-right:1px solid black;
+  border-left:2px solid black;
+  background-color: lightgrey;
+}
+
+.qualiAnswer {
+  width:65%;
+  margin:0px;
+  border-right: 1px solid black;
 }
 
 .quali {
@@ -145,45 +212,20 @@
   width:85%;
 }
 
-.seventhLine {
-  display: -webkit-inline-flex;
-  display: inline-flex;
-  margin:0px;
-  padding:0px;
-  width:100%;
-}
-
-.typeOfWork {
-  width:100%;
-  margin:0px;
-  padding:0px;
-  border-right:1px solid black;
-  border-left:1px solid black;
-}
-
-.typeOfWork input {
-  padding:5px;
-  width:5%;
-}
-
 .eigthLine {
   display: -webkit-inline-flex;
   display: inline-flex;
   margin:0px;
   padding:0px;
   width:100%;
+  background-color: lightgrey;
+  border-bottom:1px solid black;
+  border-right:1px solid black;
+  border-left:2px solid black;
 }
 
-.company {
+.typeOfWork {
   width:100%;
   margin:0px;
-  border-right:1px solid black;
-  border-left:1px solid black;
-  border-bottom:1px solid black;
-}
-
-.company input {
-  width:80%;
-  /*box-sizing:border-box;
-  -moz-box-sizing:border-box;*/
+  border-right: 1px solid black;
 }
