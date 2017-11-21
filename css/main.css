@@ -1,0 +1,18 @@
+@font-face {
+  font-family: sm;
+  src: url('../resources/more/font/MyriadPro-Regular.otf');
+}
+
+body{
+  margin: 0;
+  font-family: sm ;
+  background-color: #ededed;
+}
+
+form {
+  background-color: #e52329;
+}
+
+#logo {
+margin-left: 10%;
+}

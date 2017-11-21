@@ -6,9 +6,15 @@
   <head>
     <title> Acorn Recuritment </title>
     <link rel="stylesheet" type="text/css" href="css\first_page.css">
+    <link rel="stylesheet" type="text/css" href="css\main.css">
   </head>
 
   <body>
+
+    <header class="acornHeader">
+      <img id="logo" src="dwa.png" alt="Image of the Acorn Logo">
+    </header>
+
     <main>
       <h1>Limited Company Contractor Registration Form </h1>
       <form>
@@ -19,7 +25,7 @@
                 <label>Title:</label>
               </div>
               <div class="answer">
-                <input type="text" name="title">
+                <span title="Provide the your title eg. Mr/Mrs"><input type="text" name="title"></span>
               </div>
             </div>
             <div class="firstName">
@@ -27,7 +33,7 @@
                 <label>First Name:</label>
               </div>
               <div class="answer">
-                <input type="text" name="firstName">
+              <span title="Please enter your first name"><input type="text" name="firstName"></span>
               </div>
             </div>
             <div class="surname">
@@ -35,7 +41,7 @@
                 <label>Surname:</label>
               </div>
               <div class="answer">
-                <input type="text" name="surname">
+                <span title="Please enter your surname"><input type="text" name="surname"></span>
               </div>
             </div>
           </div>
@@ -45,7 +51,7 @@
               <label>Address:</label>
             </div>
             <div class="addressAnswer">
-              <input type="text" name="address">
+              <span title="Please enter your address"><input type="text" name="address"></span>
             </div>
           </div>
 
@@ -55,7 +61,7 @@
                 <label>Contact Number:</label>
               </div>
               <div class="answer">
-                <input type="number" name="contactNumber">
+                <span title="Please enter your contact number"><input type="number" name="contactNumber"></span>
               </div>
             </div>
             <div class="emailAddress">
@@ -63,7 +69,7 @@
                 <label>Email Address:</label>
               </div>
               <div class="answer">
-                <input type="text" name="emailAddress">
+                <span title="Please enter your email address"><input type="text" name="emailAddress">
               </div>
             </div>
           </div>
@@ -74,7 +80,7 @@
                 <label>Date of Birth:</label>
               </div>
               <div class="answer">
-                <input type="date" name="dob">
+                <span title="Please enter your date of birth"><input type="date" name="dob"></span>
               </div>
             </div>
             <div class="nationalInsurance">
@@ -82,7 +88,7 @@
                 <label>National Insurance Number:</label>
               </div>
               <div class="answer">
-                <input type="number" name="niNumber">
+                <span title="Please enter your insurance number"><input type="number" name="niNumber">
               </div>
             </div>
           </div>
@@ -92,7 +98,7 @@
                 <label>Emergency Contact Name / Number:</label>
               </div>
               <div class="contactAnswer">
-                <input type="text" name="emergContac">
+                <span title="Please enter your contact number"><input type="text" name="emergContac"></span>
               </div>
           </div>
 
@@ -113,7 +119,7 @@
               <p>*Please provide evidence
             </div>
             <div class="qualiAnswer">
-              <input type="text" name="quali">
+              <span title="Enter the qualifications you have been awarded"><input type="text" name="quali"></span>
             </div>
           </div>
 
