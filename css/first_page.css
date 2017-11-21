@@ -22,7 +22,7 @@
 .title{
   display: -webkit-inline-flex;
   display: inline-flex;
-  width:40%;
+  width:20%;
   margin:0px;
   border-left: 1px solid black;
   border-top: 1px solid black;
@@ -234,17 +234,17 @@
 }
 
 a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
 }
 
 a:hover {
-    background-color: #ddd;
-    color: black;
+  background-color: #ddd;
+  color: black;
 }
 
 .next {
-    background-color: #002966;
-    color: red;
+  background-color: #1c355e;
+  color: #e52329;
 }

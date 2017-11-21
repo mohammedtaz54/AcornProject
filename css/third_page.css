@@ -40,22 +40,17 @@
 }
 
 a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
 }
 
 a:hover {
-    background-color: #ddd;
-    color: black;
+  background-color: #ddd;
+  color: black;
 }
 
 .previous {
-  background-color: #002966;
-  color: red;
-}
-
-.next {
-  background-color: #002966;
-  color: red;
+  background-color: #1c355e;
+  color: #e52329;
 }

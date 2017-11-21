@@ -25,7 +25,15 @@
                 <label>Title:</label>
               </div>
               <div class="answer">
-                <span title="Provide the your title eg. Mr/Mrs"><input type="text" name="title"></span>
+                <select>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Sir">Sir</option>
+                  <option value="Dr">Dr</option>
+                </select>
+                <span title="Provide the your title eg. Mr/Mrs"></span>
               </div>
             </div>
             <div class="firstName">
@@ -33,7 +41,7 @@
                 <label>First Name:</label>
               </div>
               <div class="answer">
-              <span title="Please enter your first name"><input type="text" name="firstName"></span>
+              <span title="Please enter your first name"><input type="text" name="firstName" minlength="1" placeholder="enter here"></span>
               </div>
             </div>
             <div class="surname">
@@ -41,7 +49,7 @@
                 <label>Surname:</label>
               </div>
               <div class="answer">
-                <span title="Please enter your surname"><input type="text" name="surname"></span>
+                <span title="Please enter your surname"><input type="text" name="surname" minlength="1" placeholder="enter here"></span>
               </div>
             </div>
           </div>
@@ -50,8 +58,8 @@
             <div class="addressQuestion">
               <label>Address:</label>
             </div>
-            <div class="addressAnswer">
-              <span title="Please enter your address"><input type="text" name="address"></span>
+            <div class="addressAnswer"<input>
+              <span title="Please enter your address"><input type="text" name="address" minlength="1" placeholder="enter here"></span>
             </div>
           </div>
 
@@ -61,7 +69,7 @@
                 <label>Contact Number:</label>
               </div>
               <div class="answer">
-                <span title="Please enter your contact number"><input type="number" name="contactNumber"></span>
+                <span title="Please enter your contact number"><input type="text" name="contactNumber" maxlength="11" placeholder="enter here"></span>
               </div>
             </div>
             <div class="emailAddress">
@@ -69,7 +77,7 @@
                 <label>Email Address:</label>
               </div>
               <div class="answer">
-                <span title="Please enter your email address"><input type="text" name="emailAddress">
+                <span title="Please enter your email address"><input type="text" name="emailAddress" minlength="1" placeholder="enter here">
               </div>
             </div>
           </div>
@@ -88,7 +96,7 @@
                 <label>National Insurance Number:</label>
               </div>
               <div class="answer">
-                <span title="Please enter your insurance number"><input type="number" name="niNumber">
+                <span title="Please enter your insurance number"><input type="number" name="niNumber" maxlength="9" placeholder="enter here">
               </div>
             </div>
           </div>
@@ -98,7 +106,7 @@
                 <label>Emergency Contact Name / Number:</label>
               </div>
               <div class="contactAnswer">
-                <span title="Please enter your contact number"><input type="text" name="emergContac"></span>
+                <span title="Please enter your contact number"><input type="text" name="emergContact" maxlength="11" placeholder="enter here"></span>
               </div>
           </div>
 
@@ -107,7 +115,7 @@
               <label>Type of Work Required:</label>
             </div>
             <div class="workAnswer">
-              <input type="text" name="workReq">
+              <input type="text" name="workReq" minlength="1" placeholder="enter here">
               <p>Attach CV
               <input type="file" name="CV">
             </div>
@@ -119,7 +127,7 @@
               <p>*Please provide evidence
             </div>
             <div class="qualiAnswer">
-              <span title="Enter the qualifications you have been awarded"><input type="text" name="quali"></span>
+              <span title="Enter the qualifications you have been awarded"><input type="text" name="quali" minlength="1" placeholder="enter here"></span>
             </div>
           </div>
 
@@ -131,13 +139,12 @@
               <input type="radio" name="personalService" value="Personal Services Company">
               <label>(tick as appropriate)</label>
               <p>Name of Company
-              <input type="text" name="nameOfCompany">
+              <input type="text" name="nameOfCompany" minlength="1" placeholder="enter here">
             </div>
           </div>
         </section>
       </form>
     </main>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="second_page.html""#" class="next">Next &raquo;</a>
+    <a href="second_page.html""#" style="float: right;" class="next">Next &raquo;</a>
   </body>
 </html>
