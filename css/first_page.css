@@ -3,30 +3,12 @@
   padding:0px;
 }
 
-@font-face {
-  font-family: sm;
-  src: url('../resources/acorn_res/myriad_pro/MyriadPro-Regular.otf');
-}
-
-/*body{
-  margin: 0;
-  font-family: sm ;
-  background-color: #ededed;
-}
-
-form {
-  background-color: #e52329;
-}*/
-
-#logo {
-margin-left: 10%;
-}
-
 .firstPage {
   border:1px solid black;
-  /*background-color: #1c355e;
-  color:  #e52329;*/
+  background-color: #1c355e;
+  color:  #e52329;
 }
+
 
 .firstLine {
   display: -webkit-inline-flex;

@@ -12,18 +12,3 @@ https://stackoverflow.com/questions/8239782/how-to-create-an-email-form-that-can
 
 API to add postcode Lookup
 https://craftyclicks.co.uk/docs/postcode-lookup/#postcode-lookup-api
-
-
-
-	LEARNING OUTCOMES
-
-1. Analyse and interpret basic business requirements in order to build products to meet those
-requirements by applying the basic principles of Client/Server Architectures.
-2. Create web pages using HTML and CSS.
-3. Utilize JavaScript to add interactivity to web pages.
-4. Use appropriate 3rd party libraries and frameworks for CSS and JavaScript
-5. Design, write and debug server-side code written in a suitable scripting language, to fulfil
-requests from the client.
-6. Design basic databases to support real-world applications as part of a web-application,
-demonstrating understanding of core concepts.
-7. Use a server-side framework (e.g. Flask) to assist development of server-side code. 
