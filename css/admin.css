@@ -1,0 +1,15 @@
+* {
+  margin:10px;
+  padding:0px;
+  background-color:rgb(237,237,237);
+}
+
+@font-face {
+  font-family: sm;
+  src: url('../resources/acorn_res/myriad_pro/MyriadPro-Regular.otf');
+}
+
+.acornHeader {
+  display:inline-block;
+  width:100%
+}

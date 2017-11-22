@@ -9,11 +9,44 @@
   src: url('../resources/acorn_res/myriad_pro/MyriadPro-Regular.otf');
 }
 
-h1 {
-  color:rgb(31,33,63)
+.acornHeader {
+  display:inline-block;
+  width:100%
 }
 
-input {
+.acornHeader input {
+  margin-left:40px;
+  vertical-align: top;
+  width:10%;
+  padding:10px;
+  border-radius: 8px;
+  border: 1px solid rgb(112,111,111);
+}
+
+#userName{
+  position:absolute;
+  right:5px;
+  top:5px;
+}
+
+#password {
+  position:absolute;
+  right:5px;
+  top:45px;
+}
+
+#adminLogin {
+  position:absolute;
+  right:5px;
+  top:85px;
+  width:7%;
+}
+
+h1 {
+  color:rgb(28,58,93)
+}
+
+form input {
   display:block;
   width: 40%;
   margin:10px;
@@ -22,7 +55,7 @@ input {
   border: 1px solid rgb(112,111,111);
 }
 
-select {
+form select {
   display:block;
   width: 20%;
   margin:10px;
