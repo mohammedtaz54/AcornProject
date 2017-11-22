@@ -5,7 +5,7 @@
 <html lang=en>
   <head>
     <title> Acorn Recuritment </title>
-    <link rel="stylesheet" type="text/css" href="css\first_page.css">
+    <link rel="stylesheet" type="text/css" href="css\first_page_redux.css">
   </head>
 
   <body>
@@ -16,126 +16,60 @@
 
     <main>
       <h1>Limited Company Contractor Registration Form </h1>
+      <hr>
+      <p>Please fill out all input fields fully, and if you need any extra information, just hover over the field with your cursor</p>
+      <hr>
       <form>
-        <section class="firstPage">
-          <div class="firstLine">
-            <div class="title">
-              <div class="question">
-                <label>Title:</label>
-              </div>
-              <div class="answer">
-                <span title="Provide the your title eg. Mr/Mrs"><input type="text" name="title"></span>
-              </div>
-            </div>
-            <div class="firstName">
-              <div class="question">
-                <label>First Name:</label>
-              </div>
-              <div class="answer">
-              <span title="Please enter your first name"><input type="text" name="firstName"></span>
-              </div>
-            </div>
-            <div class="surname">
-              <div class="question">
-                <label>Surname:</label>
-              </div>
-              <div class="answer">
-                <span title="Please enter your surname"><input type="text" name="surname"></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="secondLine">
-            <div class="addressQuestion">
-              <label>Address:</label>
-            </div>
-            <div class="addressAnswer">
-              <span title="Please enter your address"><input type="text" name="address"></span>
-            </div>
-          </div>
-
-          <div class="thirdLine">
-            <div class="contactNumber">
-              <div class="question">
-                <label>Contact Number:</label>
-              </div>
-              <div class="answer">
-                <span title="Please enter your contact number"><input type="number" name="contactNumber"></span>
-              </div>
-            </div>
-            <div class="emailAddress">
-              <div class="question">
-                <label>Email Address:</label>
-              </div>
-              <div class="answer">
-                <span title="Please enter your email address"><input type="text" name="emailAddress">
-              </div>
-            </div>
-          </div>
-
-          <div class="fourthLine">
-            <div class="dateOfBirth">
-              <div class="question">
-                <label>Date of Birth:</label>
-              </div>
-              <div class="answer">
-                <span title="Please enter your date of birth"><input type="date" name="dob"></span>
-              </div>
-            </div>
-            <div class="nationalInsurance">
-              <div class="question">
-                <label>National Insurance Number:</label>
-              </div>
-              <div class="answer">
-                <span title="Please enter your insurance number"><input type="number" name="niNumber">
-              </div>
-            </div>
-          </div>
-
-          <div class="fifthLine">
-              <div class="contactQuestion">
-                <label>Emergency Contact Name / Number:</label>
-              </div>
-              <div class="contactAnswer">
-                <span title="Please enter your contact number"><input type="text" name="emergContac"></span>
-              </div>
-          </div>
-
-          <div class="sixthLine">
-            <div class="workQuestion">
-              <label>Type of Work Required:</label>
-            </div>
-            <div class="workAnswer">
-              <input type="text" name="workReq">
-              <p>Attach CV
-              <input type="file" name="CV">
-            </div>
-          </div>
-
-          <div class="seventhLine">
-            <div class="qualiQuestion">
-              <label>Qualifications / licences held:</label>
-              <p>*Please provide evidence
-            </div>
-            <div class="qualiAnswer">
-              <span title="Enter the qualifications you have been awarded"><input type="text" name="quali"></span>
-            </div>
-          </div>
-
-          <div class="eigthLine">
-            <div class="typeOfWork">
-              <label>I will be Working via an Umbrella Company</label>
-              <input type="radio" name="umbrella" value="Umbrella Company">
-              <label>a Personal Services Company</label>
-              <input type="radio" name="personalService" value="Personal Services Company">
-              <label>(tick as appropriate)</label>
-              <p>Name of Company
-              <input type="text" name="nameOfCompany">
-            </div>
-          </div>
+        <section class="personalDetails">
+          <h1> Step 1 - Personal Details</h1>
+          <select class="title">
+            <option value="Title" disabled selected hidden> Title </option>
+            <option value="Mr."> Mr.</option>
+            <option value="Miss"> Miss</option>
+            <option value="Mrs."> Mrs.</option>
+            <option value="Ms."> Ms.</option>
+          </select>
+          <input type="text" name="firstName" placeholder="First Name">
+          <input type="text" name="surname" placeholder="Surname">
+          <select class="gender">
+            <option value="Gender" disabled selected hidden> Gender </option>
+            <option value="Male"> Male </option>
+            <option value="Female"> Female </option>
+            <option value="Prefer not to say"> Prefer not to say </option>
+          </select>
+          <input type="text" name="dob" placeholder="Date of Birth">
+          <input type="number" name="niNumber" placeholder="National Insurance Number">
+        </section>
+        <hr>
+        <section class="contactInfo">
+          <h1> Step 2 - Contact Information</h1>
+          <input type="email" name="eAddress" placeholder="Email Address">
+          <input type="email" name="confirmEAddress" placeholder="Confirm Email Address"> <!--We need to do the input type where you can't copy paste into it to make it a true "confirmation" -->
+          <input type="number" name="contactNumber" placeholder="Contact Phone Number">
+          <input type="text" name="postCode" placeholder="Postal Code">
+          <input type="text" name="addressLine1" placeholder="Address Line 1">
+          <input type="text" name="addressLine2" placeholder="Address Line 2">
+          <input type="text" name="addressLine3" placeholder="Address Line 3">
+          <input type="text" name="city" placeholder="City">
+          <input type="text" name="emergContac" placeholder="Emergency Contact Name">
+          <input type="number" name="emergContacNumber" placeholder="Emergency Contact Number">
+        </section>
+        <hr>
+        <section class="workInfo">
+          <h1> Step 3 - Work Information</h1>
+          <input type="text" name="workReq" placeholder="Type of Work Required:">
+          <input type="text" name="quali" placeholder="Qualifications / Licences held:">
+          <input type="text" name="nameOfCompany" placeholder="Name of Company">
+        </section>
+        <hr>
+        <section class="uploadCV">
+          <h1> Step 4 - CV File</h1>
+          <p> Please upload your CV here</p>
+          <input type="file" name="CV">
         </section>
       </form>
     </main>
-  <a href="second_page.html""#" class="next">Next &raquo;</a>
+  <!-- <a href="second_page_redux.html""#" class="next">Next &raquo;</a> Commented out until we decide whether or not we need more pages -->
+    <button type="button">Submit</button>
   </body>
 </html>
