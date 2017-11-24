@@ -64,6 +64,15 @@ form select {
   border: 1px solid rgb(112,111,111);
 }
 
+h2 {
+  font-size: 20px;
+  color:rgb(28,58,93);
+}
+
+.references input {
+  margin-left: 30px;
+}
+
 button {
   display:block;
   min-height: 35px;

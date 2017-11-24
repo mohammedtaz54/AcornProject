@@ -65,8 +65,61 @@
           <input type="text" name="nameOfCompany" placeholder="Name of Company">
         </section>
         <hr>
+        <section class="extendedInfo">
+          <h1> Step 4 - Extended Information</h1>
+          <span>Are you eligible to work in the UK?
+          <select class="eligibility">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option value="No"> No </option>
+          </select>
+          <input type="text" name="proofEligibility" placeholder="Please detail which documents you will provide as proof">
+          <span>Do you have a current UK driving licence?
+          <select class="licence">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option value="No"> No </option>
+          </select>
+          <span>Do you have any current criminal convictions as per the
+             Rehabilitation of Offenders Act 1974?
+          <select class="criminalConviction">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option value="No"> No </option>
+          </select>
+          <input type="text" name="criminalDetails" placeholder="Please provide full details">
+          <span>Do you condiser yourself to have a disability?
+          <select class="criminalConviction">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option value="No"> No </option>
+          </select>
+          <input type="text" name="criminalDetails" placeholder="Please provide full details">
+        </section>
+        <hr>
+        <section class="references">
+          <h1> Step 5 - References </h1>
+          <p>Please provide details of two referees whom we may contact to obtain
+          a reference in connection with your employment. These should idealy
+          be your current and previous employer.</p>
+          <h2> Referee 1 </h2>
+            <input type="text" name="RefereeName1" placeholder="Referee's Name">
+            <input type="text" name="RefereeJob1" placeholder="Referee's Job">
+            <input type="text" name="RefereeComp1" placeholder="Referee's Company">
+            <input type="text" name="RefereeAddress1" placeholder="Referee's Address">
+            <input type="number" name="RefereeNum1" placeholder="Referee's Phone Number">
+            <input type="email" name="RefereeEmail1" placeholder="Referee's Email Address">
+          <h2> Referee 2 </h2>
+            <input type="text" name="RefereeName2" placeholder="Referee's Name">
+            <input type="text" name="RefereeJob2" placeholder="Referee's Job">
+            <input type="text" name="RefereeComp2" placeholder="Referee's Company">
+            <input type="text" name="RefereeAddress2" placeholder="Referee's Address">
+            <input type="number" name="RefereeNum2" placeholder="Referee's Phone Number">
+            <input type="email" name="RefereeEmail2" placeholder="Referee's Email Address">
+        </section>
+        <hr>
         <section class="uploadCV">
-          <h1> Step 4 - CV File</h1>
+          <h1> Step 6 - CV File</h1>
           <p> Please upload your CV here</p>
           <input type="file" name="CV">
         </section>
