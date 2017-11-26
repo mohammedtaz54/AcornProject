@@ -6,6 +6,7 @@
   <head>
     <title> Acorn Recuritment </title>
     <link rel="stylesheet" type="text/css" href="css\main.css">
+    <style> #map {height: 400px; width: 400px;}</style>
   </head>
 
   <body>
@@ -16,4 +17,30 @@
 
     <main>
       <h1>Administration Page</h1>
-      <hr>
+
+      <h3>Map of Contractors Addresses</h3>
+        <div id = "map"></div>
+
+    </main>
+
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuMYtzXnl4fgx4t7pRZDwRL6Sif2M2tb8&callback=initMap">
+    </script>
+
+  </body>
+
+
+</html>
