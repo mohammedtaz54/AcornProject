@@ -4,9 +4,9 @@
 
 <html lang=en>
   <head>
+    <script src="crafty_postcode.class.js"></script>
     <title> Acorn Recuritment </title>
     <link rel="stylesheet" type="text/css" href="css\main.css">
-    <script src="postcodeAPI.js"></script>
   </head>
 
   <body>
@@ -50,15 +50,18 @@
           <input type="email" name="eAddress" placeholder="Email Address">
           <input type="email" name="confirmEAddress" placeholder="Confirm Email Address"> <!--We need to do the input type where you can't copy paste into it to make it a true "confirmation" -->
           <input type="number" name="contactNumber" placeholder="Contact Phone Number">
-          <form method="post" name="addressLook">
-            <input type="text" name="postCode" placeholder="Postal Code">
-            <button type="button" onclick="cp_obj.doLookup()">Find Address</button>
-            <span id="crafty_postcode_result_display">&nbsp;</span><br/>
-            <input type="text" name="addressLine1" placeholder="Address Line 1">
-            <input type="text" name="addressLine2" placeholder="Address Line 2">
-            <input type="text" name="addressLine3" placeholder="Address Line 3">
+        </form>
+        <!-- to test postcode lookup use "AA11AA" -->
+          <form method="post" name="address">
+            <input type="text" name="postcode" placeholder="Postal Code"><button type="button" onclick="cp_obj.doLookup()">Find Address</button>
+            <span id="crafty_postcode_result_display"></span>
+            <input type="text" name="address1" placeholder="Address Line 1">
+            <input type="text" name="address2" placeholder="Address Line 2">
+            <input type="text" name="address3" placeholder="Address Line 3">
             <input type="text" name="town" placeholder="town">
           </form>
+
+        <form>
 
           <input type="text" name="emergContac" placeholder="Emergency Contact Name">
           <input type="number" name="emergContacNumber" placeholder="Emergency Contact Number">
@@ -133,19 +136,18 @@
     </main>
     <button type="button">Submit</button>
 
-    <script>
-
-    var cp_obj = CraftyPostcodeCreate();
-    cp_obj.set("access_token", "ef997-4596c-2db37-0260a"); // your token here
-    cp_obj.set("result_elem_id", "crafty_postcode_result_display");
-    cp_obj.set("form", "addressLook");
-    cp_obj.set("elm_street1", "addressLine1");
-    cp_obj.set("elm_street2", "addressLine2");
-    cp_obj.set("elm_street3", "addressLine3");
-    cp_obj.set("elm_town", "city");
-    cp_obj.set("elem_postcode", "postCode");
-
-    </script>
+<script>
+   var cp_obj = CraftyPostcodeCreate();
+   cp_obj.set("access_token", "ef997-4596c-2db37-0260a"); // your token here
+   cp_obj.set("result_elem_id", "crafty_postcode_result_display");
+   cp_obj.set("form", "address");
+   cp_obj.set("elem_company"  , "companyname");
+   cp_obj.set("elem_street1"  , "address1");
+   cp_obj.set("elem_street2"  , "address2");
+   cp_obj.set("elem_street3"  , "address3");
+   cp_obj.set("elem_town"     , "town");
+   cp_obj.set("elem_postcode" , "postcode");
+</script>
 
   </body>
 </html>
