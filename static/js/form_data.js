@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function eValidate(){
   var email = document.getElementById('eAddress')
   var emailC = document.getElementById('confirmEAddress')
@@ -41,5 +42,18 @@ if(option2 == "No"){
 else if(option2 == "Yes"){
   removeIt2.style.visibility = "visible";
 }
+=======
+function confirmEmail() {
+  var email = document.forms["contractorForm"]['eAddress'].value;
+  var confemail = document.forms["contractorForm"]['confirmEAddress'].value;
+  if(email != confemail) {
+    alert('Email Not Matching!');
+    email.style.borderColor="red";
+    confemail.sytle.borderColor="red";
+  } else{
+    email.style.borderColor="rgb(112,111,111)";
+    confemail.sytle.borderColor="rgb(112,111,111)";
+  }
+>>>>>>> bd175d1e6ccb11263788675652e414e5c69d698f
 
 }
