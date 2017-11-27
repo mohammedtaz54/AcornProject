@@ -47,9 +47,9 @@
         <hr>
         <section class="contactInfo">
           <h1> Step 2 - Contact Information</h1>
-          <input type="email" name="eAddress" placeholder="Email Address">
-          <input type="email" name="confirmEAddress" placeholder="Confirm Email Address"> <!--We need to do the input type where you can't copy paste into it to make it a true "confirmation" -->
-          <input type="text" name="contactNumber" placeholder="Contact Phone Number">
+          <input id="eAddress" type="email" name="eAddress" placeholder="Email Address">
+          <input id="confirmEAddress" type="email" name="confirmEAddress" placeholder="Confirm Email Address"> <!--We need to do the input type where you can't copy paste into it to make it a true "confirmation" -->
+          <input onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number">
           <!-- <form method="post" name="addressLook"> -->
             <input type="text" name="postCode" placeholder="Postal Code">
             <!-- <button type="button" onclick="cp_obj.doLookup()">Find Address</button>
@@ -74,7 +74,7 @@
         <section class="extendedInfo">
           <h1> Step 4 - Extended Information</h1>
           <span>Are you eligible to work in the UK?
-          <select class="eligibility" name="eligibility">
+          <select  onclick="hide()" class="eligibility" name="eligibility">
             <option value="" disabled selected hidden></option>
             <option value="Yes"> Yes </option>
             <option value="No"> No </option>
@@ -173,6 +173,23 @@
           xhttp.send(params);
           return false;
         }
+    </script>
+
+    <script type="text/javascript">
+      function eValidate(){
+        var email = document.getElementById('eAddress')
+        var emailC = document.getElementById('confirmEAddress')
+        if(email.value != emailC.value){
+          alert("Emails do not match");
+          email.style.borderColor = "red";
+          emailC.style.borderColor = "red";
+        }
+        else{
+          email.style.borderColor = "rgb(112,111,111)";
+          emailC.style.borderColor = "rgb(112,111,111)";
+        }
+        };
+
     </script>
   </body>
 </html>
