@@ -144,21 +144,21 @@
                          "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
                          "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
                          "'refereeAddress2'", "'refereeEmail2'"]
-        listvalue = []
-        for (i in fieldlist) {
-          listvalue.push(document.forms["contractorForm"][i].value)
-        }
 
+        params =""
+        for (i in fieldlist) {
+          params += i+"="+document.forms["contractorForm"][i].value+"&";
+        }
         // var title = document.forms["contractorForm"]["title"].value;
         // params = 'title='+title+'&firstName='+firstName+'&surname='+surname+'&gender='+gender;
 
-        params = 'title='+listvalue[0]+'&firstName='+listvalue[1]+'&surname='+listvalue[2]+'&gender='+listvalue[3]+'&dob='+listvalue[4]+'&niNumber='+listvalue[5]+'&eAddress='+listvalue[6]+'&contactNumber='+listvalue[7]+
-                 '&postCode='+listvalue[8]+'&addressLine1='+listvalue[9]+'&addressLine2='+listvalue[10]+'&addressLine3='+listvalue[11]+'&town='+listvalue[12]+'&emergContact='+listvalue[13]+
-                 '&emergContactNumber='+listvalue[14]+'&workReq='+listvalue[15]+'&quali='+listvalue[16]+'&nameOfCompany='+listvalue[17]+'&eligibility='+listvalue[18]+
-                 '&proofOfEligibility='+listvalue[19]+'&licence='+listvalue[20]+'&criminalConviction='+listvalue[21]+'&criminalDetails='+listvalue[22]+'&disability='+listvalue[23]+
-                 '&disabilityDetails='+listvalue[24]+'&refereeName1='+listvalue[25]+'&refereeJob1='+listvalue[26]+'&refereeComp1='+listvalue[27]+'&refereeAddress1='+listvalue[28]+
-                 '&refereeNum1='+listvalue[29]+'&refereeEmail1='+listvalue[30]+'&refereeName2='+listvalue[31]+'&refereeJob2='+listvalue[32]+'&refereeComp2='+listvalue[33]+'&refereeNum2='+listvalue[34]+
-                 '&refereeAddress2='+listvalue[35]+'&refereeEmail2='+listvalue[36];
+        // params = 'title='+listvalue[0]+'&firstName='+listvalue[1]+'&surname='+listvalue[2]+'&gender='+listvalue[3]+'&dob='+listvalue[4]+'&niNumber='+listvalue[5]+'&eAddress='+listvalue[6]+'&contactNumber='+listvalue[7]+
+        //          '&postCode='+listvalue[8]+'&addressLine1='+listvalue[9]+'&addressLine2='+listvalue[10]+'&addressLine3='+listvalue[11]+'&town='+listvalue[12]+'&emergContact='+listvalue[13]+
+        //          '&emergContactNumber='+listvalue[14]+'&workReq='+listvalue[15]+'&quali='+listvalue[16]+'&nameOfCompany='+listvalue[17]+'&eligibility='+listvalue[18]+
+        //          '&proofOfEligibility='+listvalue[19]+'&licence='+listvalue[20]+'&criminalConviction='+listvalue[21]+'&criminalDetails='+listvalue[22]+'&disability='+listvalue[23]+
+        //          '&disabilityDetails='+listvalue[24]+'&refereeName1='+listvalue[25]+'&refereeJob1='+listvalue[26]+'&refereeComp1='+listvalue[27]+'&refereeAddress1='+listvalue[28]+
+        //          '&refereeNum1='+listvalue[29]+'&refereeEmail1='+listvalue[30]+'&refereeName2='+listvalue[31]+'&refereeJob2='+listvalue[32]+'&refereeComp2='+listvalue[33]+'&refereeNum2='+listvalue[34]+
+        //          '&refereeAddress2='+listvalue[35]+'&refereeEmail2='+listvalue[36];
 
         xhttp.open('POST', '/Home', true); // true is asynchronous
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
