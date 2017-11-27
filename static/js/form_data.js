@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 function eValidate(){
   var email = document.getElementById('eAddress')
   var emailC = document.getElementById('confirmEAddress')
@@ -22,7 +22,7 @@ function hide(){
 
 if(option == "No"){
     removeIt.style.visibility = "hidden";
-    
+
 }
 else if(option == "Yes"){
   removeIt.style.visibility = "visible";
@@ -42,7 +42,8 @@ if(option2 == "No"){
 else if(option2 == "Yes"){
   removeIt2.style.visibility = "visible";
 }
-=======
+}
+
 function confirmEmail() {
   var email = document.forms["contractorForm"]['eAddress'].value;
   var confemail = document.forms["contractorForm"]['confirmEAddress'].value;
@@ -54,6 +55,5 @@ function confirmEmail() {
     email.style.borderColor="rgb(112,111,111)";
     confemail.sytle.borderColor="rgb(112,111,111)";
   }
->>>>>>> bd175d1e6ccb11263788675652e414e5c69d698f
 
 }
