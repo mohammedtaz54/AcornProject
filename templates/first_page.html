@@ -6,7 +6,7 @@
   <head>
     <title> Acorn Recuritment </title>
     <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
-    <!-- <script src="js/postcodeAPI.js"></script> -->
+    <script src="..\static\js\form_data.js"></script>
   </head>
 
   <body>
@@ -47,9 +47,15 @@
         <hr>
         <section class="contactInfo">
           <h1> Step 2 - Contact Information</h1>
+<<<<<<< HEAD
           <input id="eAddress" type="email" name="eAddress" placeholder="Email Address">
           <input id="confirmEAddress" type="email" name="confirmEAddress" placeholder="Confirm Email Address"> <!--We need to do the input type where you can't copy paste into it to make it a true "confirmation" -->
           <input onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number">
+=======
+          <input type="email" name="eAddress" placeholder="Email Address">
+          <input type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()">
+          <input type="text" name="contactNumber" placeholder="Contact Phone Number">
+>>>>>>> 107718e2d7e20ab3164b50026cea4fb8378657aa
           <!-- <form method="post" name="addressLook"> -->
             <input type="text" name="postCode" placeholder="Postal Code">
             <!-- <button type="button" onclick="cp_obj.doLookup()">Find Address</button>
@@ -59,7 +65,6 @@
             <input type="text" name="addressLine3" placeholder="Address Line 3">
             <input type="text" name="town" placeholder="town">
           <!--</form>-->
-
           <input type="text" name="emergContact" placeholder="Emergency Contact Name">
           <input type="text" name="emergContactNumber" placeholder="Emergency Contact Number">
         </section>
@@ -149,17 +154,6 @@
         for (i in fieldlist) {
           params += i+"="+document.forms["contractorForm"][i].value+"&";
         }
-        // var title = document.forms["contractorForm"]["title"].value;
-        // params = 'title='+title+'&firstName='+firstName+'&surname='+surname+'&gender='+gender;
-
-        // params = 'title='+listvalue[0]+'&firstName='+listvalue[1]+'&surname='+listvalue[2]+'&gender='+listvalue[3]+'&dob='+listvalue[4]+'&niNumber='+listvalue[5]+'&eAddress='+listvalue[6]+'&contactNumber='+listvalue[7]+
-        //          '&postCode='+listvalue[8]+'&addressLine1='+listvalue[9]+'&addressLine2='+listvalue[10]+'&addressLine3='+listvalue[11]+'&town='+listvalue[12]+'&emergContact='+listvalue[13]+
-        //          '&emergContactNumber='+listvalue[14]+'&workReq='+listvalue[15]+'&quali='+listvalue[16]+'&nameOfCompany='+listvalue[17]+'&eligibility='+listvalue[18]+
-        //          '&proofOfEligibility='+listvalue[19]+'&licence='+listvalue[20]+'&criminalConviction='+listvalue[21]+'&criminalDetails='+listvalue[22]+'&disability='+listvalue[23]+
-        //          '&disabilityDetails='+listvalue[24]+'&refereeName1='+listvalue[25]+'&refereeJob1='+listvalue[26]+'&refereeComp1='+listvalue[27]+'&refereeAddress1='+listvalue[28]+
-        //          '&refereeNum1='+listvalue[29]+'&refereeEmail1='+listvalue[30]+'&refereeName2='+listvalue[31]+'&refereeJob2='+listvalue[32]+'&refereeComp2='+listvalue[33]+'&refereeNum2='+listvalue[34]+
-        //          '&refereeAddress2='+listvalue[35]+'&refereeEmail2='+listvalue[36];
-
         xhttp.open('POST', '/Home', true); // true is asynchronous
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function() {
