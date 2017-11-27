@@ -1,7 +1,7 @@
-// function confirmEmail() {
-//   var email = document.getElementById("eAddress").value
-//   var confemail = document.getElementById("confirmEAddress").value
-//   if(email != confemail) {
-//     alert('Email Not Matching!');
-//   }
-// }
+function confirmEmail() {
+  var email = document.forms["contractorForm"]['eAddress'].value;
+  var confemail = document.forms["contractorForm"]['confirmEAddress'].value;
+  if(email != confemail) {
+    alert('Email Not Matching!');
+  }
+}
