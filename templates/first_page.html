@@ -45,11 +45,11 @@
         <hr>
         <section class="contactInfo">
           <h1> Step 2 - Contact Information</h1>
-          <input type="email" name="eAddress" placeholder="Email Address">
-          <input type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()">
-          <input onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number">
+          <input title="Make sure it is a valid email" type="email" name="eAddress" placeholder="Email Address">
+          <input title="Check if emails match" type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()">
+          <input title="No spaces needed" onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number">
           <!-- <form method="post" name="addressLook"> -->
-            <input type="text" name="postCode" placeholder="Postal Code">
+          <input title="Please enter your postcode like this XXX XXX" type="text" name="postCode" placeholder="Postal Code">
             <!-- <button type="button" onclick="cp_obj.doLookup()">Find Address</button>
             <span id="crafty_postcode_result_display">&nbsp;</span><br/> -->
             <input type="text" name="addressLine1" placeholder="Address Line 1">
@@ -58,8 +58,8 @@
             <input type="text" name="town" placeholder="town">
           <!--</form>-->
 
-          <input type="text" name="emergContact" placeholder="Emergency Contact Name">
-          <input type="text" name="emergContactNumber" placeholder="Emergency Contact Number">
+          <input title="No spaces needed" type="text" name="emergContact" placeholder="Emergency Contact Name">
+          <input title="No spaces needed" type="text" name="emergContactNumber" placeholder="Emergency Contact Number">
         </section>
         <hr>
         <section class="workInfo">
