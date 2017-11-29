@@ -18,7 +18,7 @@ function agreement() {
     var firstname = document.forms["contractorForm"]['firstName'].value;
     var surname = document.forms["contractorForm"]['surname'].value;
     document.getElementById("signature").innerHTML= firstname+" "+surname+" "+timestamp;
-  }
+  } 
   else {
     document.getElementById("signature").innerHTML = " ";
   }
