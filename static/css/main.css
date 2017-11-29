@@ -10,8 +10,6 @@
   src: url('../acorn_res/myriad_pro/MyriadPro-Regular.otf');
 }
 
-
-
 .acornHeader {
   display:inline-block;
   width:100%
@@ -74,6 +72,27 @@ h2 {
 
 .references input {
   margin-left: 30px;
+}
+
+.signatureConfirmBox{
+  background-color:rgb(172,171,171);
+  padding:5px;
+  border-radius:5px;
+}
+
+.signatureConfirmBox p {
+  background-color:rgb(172,171,171);
+}
+
+#checkBox {
+  display:inline;
+  width:25%;
+}
+
+#signature {
+  display:inline;
+  width:50%;
+  background-color:rgb(172,171,171);
 }
 
 button {
