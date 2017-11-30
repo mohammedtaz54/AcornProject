@@ -166,7 +166,7 @@
         }
         cvFile = document.forms["contractorForm"]['CV'];
         picFile = document.forms["contractorForm"]['profileImage'];
-        xhttp.open('POST', '/Home', true); // true is asynchronous
+        xhttp.open('POST', '/Form', true); // true is asynchronous
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function() {
           if (xhttp.readyState === 4 && xhttp.status === 200) {

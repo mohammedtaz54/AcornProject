@@ -3,24 +3,31 @@ from flask import Flask, redirect, request, render_template
 import sqlite3
 
 DATABASE = "sql/client_information.db"
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'PNG', 'jpg', 'jpeg', 'gif', 'docx'])
+CV_ALLOWED_EXTENSIONS = set(['doc', 'doc', 'docx'])
+PIC_ALLOWED_EXTENSIONS = set(['png', 'PNG', 'jpg', 'jpeg', 'gif'])
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads')
+CV_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/cvs')
+PIC_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/pictures')
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['CV_UPLOAD_FOLDER'] = CV_UPLOAD_FOLDER
+app.config['PIC_UPLOAD_FOLDER'] = PIC_UPLOAD_FOLDER
 
-def allowed_file(filename):
+def allowed_file(filename, filetype):
     ext = filename.rsplit('.',1)[1]
     print(ext)
-    return '.' in filename and ext in ALLOWED_EXTENSIONS
+    if filetype == 'CV':
+        return '.' in filename and ext in CV_ALLOWED_EXTENSIONS
+    if filetype =='PIC':
+        return '.' in filename and ext in PIC_ALLOWED_EXTENSIONS
 
-@app.route("/Home", methods=['POST', 'GET'])
+@app.route("/Form", methods=['POST', 'GET'])
 def addContractorDetails():
     if request.method == 'GET':
-        return render_template('first_page.html')
+        return render_template('form.html')
     if request.method == 'POST':
         cv_upload()
+        pic_upload()
         fieldlist = ['title', 'firstName', 'surname', 'gender', 'dob', 'niNumber', 'eAddress', 'contactNumber',
                      'postCode', 'addressLine1', 'addressLine2', 'addressLine3', 'town', 'emergContact',
                      'emergContactNumber', 'workReq', 'quali', 'nameOfCompany', 'eligibility',
@@ -62,7 +69,6 @@ def addContractorDetails():
             return msg
 
 def cv_upload():
-    msgr = ''
     print("It looked at it")
     if 'CV' not in request.files:
         print("No file received")
@@ -71,16 +77,31 @@ def cv_upload():
         cv = request.files["CV"]
         if cv.filename == "":
             print("File name blank")
-        elif cv and allowed_file(cv.filename):
+        elif cv and allowed_file(cv.filename, 'CV'):
             print("File is actually going thorugh")
-            filename = secure_filename(cv.filename)
-            filePath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            filename = secure_filename(cv.filename, 'CV')
+            filePath = os.path.join(app.config['CV_UPLOAD_FOLDER'], filename)
             cv.save(filePath)
 
-def secure_filename(filename):
+def pic_upload() :
+    print("It looked at it")
+    if 'profileImage' not in request.files:
+        print("No picture received")
+    else:
+        print("Picture was recieved")
+        pic = request.files["profileImage"]
+        if pic.filename == "":
+            print("Picture name blank")
+        elif pic and allowed_file(pic.filename, 'PIC'):
+            print("File is actually going thorugh")
+            filename = secure_filename(pic.filename, 'Picture')
+            filePath = os.path.join(app.config['PIC_UPLOAD_FOLDER'], filename)
+            pic.save(filePath)
+
+def secure_filename(filename, filetype):
     first = request.form.get('firstName')
     last = request.form.get('surname')
-    main = str(first) + str(last) + "CV." + filename.rsplit('.',1)[1]
+    main = str(first) + str(last) + filetype +"."+ filename.rsplit('.',1)[1]
     return main
 
 
