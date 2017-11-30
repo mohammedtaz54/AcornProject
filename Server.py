@@ -20,7 +20,7 @@ def addContractorDetails():
     if request.method == 'GET':
         return render_template('first_page.html')
     if request.method == 'POST':
-        upload_files()
+        cv_upload()
         fieldlist = ['title', 'firstName', 'surname', 'gender', 'dob', 'niNumber', 'eAddress', 'contactNumber',
                      'postCode', 'addressLine1', 'addressLine2', 'addressLine3', 'town', 'emergContact',
                      'emergContactNumber', 'workReq', 'quali', 'nameOfCompany', 'eligibility',
@@ -61,30 +61,27 @@ def addContractorDetails():
             conn.close()
             return msg
 
-
-def upload_files():
+def cv_upload():
     msgr = ''
     print("It looked at it")
     if 'CV' not in request.files:
-        msgr = 'No file given'
         print("No file received")
     else:
         print("File was recieved")
         cv = request.files["CV"]
         if cv.filename == "":
-            msgr = 'There is no file name'
             print("File name blank")
         elif cv and allowed_file(cv.filename):
             print("File is actually going thorugh")
             filename = secure_filename(cv.filename)
-            filePath = os.path.join(app.config/
-                        ['UPLOAD_FOLDER'], filename)
+            filePath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             cv.save(filePath)
-            msgr = filePath
-    return msgr
 
-
-
+def secure_filename(filename):
+    first = request.form.get('firstName')
+    last = request.form.get('surname')
+    main = str(first) + str(last) + "CV." + filename.rsplit('.',1)[1]
+    return main
 
 
 
