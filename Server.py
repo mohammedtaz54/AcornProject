@@ -26,8 +26,8 @@ def addContractorDetails():
     if request.method == 'GET':
         return render_template('form.html')
     if request.method == 'POST':
-        cv_upload()
-        pic_upload()
+        cvPath = cv_upload()
+        picPath = pic_upload()
         fieldlist = ['title', 'firstName', 'surname', 'gender', 'dob', 'niNumber', 'eAddress', 'contactNumber',
                      'postCode', 'addressLine1', 'addressLine2', 'addressLine3', 'town', 'emergContact',
                      'emergContactNumber', 'workReq', 'quali', 'nameOfCompany', 'eligibility',
@@ -50,15 +50,16 @@ def addContractorDetails():
                                     'criminalConviction', 'criminalDetails', 'disability','disabilityDetails',\
                                     'refereeName1', 'refereeJob1', 'refereeComp1', 'refereeAddress1','refereeNum1',\
                                     'refereeEmail1','refereeName2', 'refereeJob2', 'refereeComp2','refereeAddress2',\
-                                    'refereeNum2','refereeEmail2')\
-                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (valuelist[0],\
+                                    'refereeNum2','refereeEmail2', 'cvFilePath', 'picFilePath')\
+                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (valuelist[0],\
                                 valuelist[1], valuelist[2], valuelist[3], valuelist[4], valuelist[5],\
                                 valuelist[6], valuelist[7], valuelist[8], valuelist[9], valuelist[10],\
                                 valuelist[11], valuelist[12], valuelist[13], valuelist[14], valuelist[15],\
                                 valuelist[16], valuelist[17], valuelist[18], valuelist[19], valuelist[20],\
                                 valuelist[21], valuelist[22], valuelist[23], valuelist[24], valuelist[25],\
                                 valuelist[26], valuelist[27], valuelist[28], valuelist[29], valuelist[30],\
-                                valuelist[31], valuelist[32], valuelist[33], valuelist[34], valuelist[35], valuelist[36]))
+                                valuelist[31], valuelist[32], valuelist[33], valuelist[34], valuelist[35],\
+                                valuelist[36], cvPath, picPath))
             conn.commit()
             msg = "Record sucessfully added"
         except:
@@ -69,34 +70,31 @@ def addContractorDetails():
             return msg
 
 def cv_upload():
-    print("It looked at it")
     if 'CV' not in request.files:
         print("No file received")
     else:
-        print("File was recieved")
         cv = request.files["CV"]
         if cv.filename == "":
             print("File name blank")
         elif cv and allowed_file(cv.filename, 'CV'):
-            print("File is actually going thorugh")
             filename = secure_filename(cv.filename, 'CV')
             filePath = os.path.join(app.config['CV_UPLOAD_FOLDER'], filename)
-            cv.save(filePath)
+            cvPath = filePath
+            print(cvPath)
+    return cvPath
 
 def pic_upload() :
-    print("It looked at it")
     if 'profileImage' not in request.files:
         print("No picture received")
     else:
-        print("Picture was recieved")
         pic = request.files["profileImage"]
         if pic.filename == "":
             print("Picture name blank")
         elif pic and allowed_file(pic.filename, 'PIC'):
-            print("File is actually going thorugh")
             filename = secure_filename(pic.filename, 'Picture')
             filePath = os.path.join(app.config['PIC_UPLOAD_FOLDER'], filename)
-            pic.save(filePath)
+            picPath = filePath
+    return picPath
 
 def secure_filename(filename, filetype):
     first = request.form.get('firstName')
