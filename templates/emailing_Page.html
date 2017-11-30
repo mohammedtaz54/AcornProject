@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+
+<!-- Please check the notes in resources/helpful_notes.txt for information -->
+
+<html lang=en>
+  <head>
+    <title> Acorn Recuritment </title>
+    <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
+    <script src="../static/js/form_scripts.js"></script>
+    <script src="../static/js/validation.js"></script>
+    <script charset="utf-8" src="https://ucarecdn.com/libs/widget/3.2.1/uploadcare.full.min.js"></script>
+  </head>
+
+  <body>
+    <header class="acornHeader">
+      <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
+      <input id="userName" type="text" name="userName" placeholder="User Name">
+      <input id="password" type="password" name="password" placeholder="Password">
+      <button id="adminLogin" type="button">Admin Login</button>
+    </header>
+    <main>
+      <h1>Limited Company Contractor Registration Form </h1>
+      <hr>
+      <p>Please fill out all input fields fully, and if you need any extra information, just hover over the field with your cursor</p>
+      <hr>
+      <!-- <form id='contractorForm' onsubmit="return addForm()" method="post" autocomplete="on" enctype="multipart/form-data" action=""> -->
+      <form action="https://formspree.io/arslanmazlum1@gmail.com" method="POST">
+        <section class="personalDetails">
+          <h1> Step 1 - Personal Details</h1>
+          <select class="title" name="title">
+            <option value="Title" disabled selected hidden> Title </option>
+            <option value="Mr."> Mr.</option>
+            <option value="Miss"> Miss</option>
+            <option value="Mrs."> Mrs.</option>
+            <option value="Ms."> Ms.</option>
+          </select>
+          <input type="text" name="firstName" placeholder="First Name">
+          <input type="text" name="surname" placeholder="Surname">
+          <select class="gender" name="gender">
+            <option value="Gender" disabled selected hidden> Gender </option>
+            <option value="Male"> Male </option>
+            <option value="Female"> Female </option>
+            <option value="Prefer not to say"> Prefer not to say </option>
+          </select>
+          <input type="text" name="dob" placeholder="Date of Birth">
+          <input type="text" name="niNumber" placeholder="National Insurance Number" autocomplete="off">
+        </section>
+        <hr>
+        <section class="contactInfo">
+          <h1> Step 2 - Contact Information</h1>
+          <input title="Make sure it is a valid email" type="email" name="eAddress" placeholder="Email Address">
+          <input title="Check if emails match" type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()">
+          <input title="No spaces needed" onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number">
+          <!-- <form method="post" name="addressLook"> -->
+          <input title="Please enter your postcode like this XXX XXX" type="text" name="postCode" placeholder="Postal Code">
+            <!-- <button type="button" onclick="cp_obj.doLookup()">Find Address</button>
+            <span id="crafty_postcode_result_display">&nbsp;</span><br/> -->
+            <input type="text" name="addressLine1" placeholder="Address Line 1">
+            <input type="text" name="addressLine2" placeholder="Address Line 2">
+            <input type="text" name="addressLine3" placeholder="Address Line 3">
+            <input type="text" name="town" placeholder="town">
+          <!-- </form> -->
+
+          <input title="No spaces needed" type="text" name="emergContact" placeholder="Emergency Contact Name">
+          <input title="No spaces needed" type="text" name="emergContactNumber" placeholder="Emergency Contact Number">
+        </section>
+        <hr>
+        <section class="workInfo">
+          <h1> Step 3 - Work Information</h1>
+          <input type="text" name="workReq" placeholder="Type of Work Required:">
+          <input type="text" name="quali" placeholder="Qualifications / Licences held:">
+          <input type="text" name="nameOfCompany" placeholder="Name of Company">
+        </section>
+        <hr>
+        <section class="extendedInfo">
+          <h1> Step 4 - Extended Information</h1>
+          <span>Are you eligible to work in the UK?
+          <select onclick="hide()" class="eligibility" name="eligibility">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option  value="No"> No </option>
+          </select>
+          <input id="removed" type="text" name="proofOfEligibility" placeholder="Please detail which documents you will provide as proof">
+          <span>Do you have a current UK driving licence?
+          <select class="licence" name="licence">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option value="No"> No </option>
+          </select>
+          <span>Do you have any current criminal convictions as per the
+             Rehabilitation of Offenders Act 1974?
+          <select onclick="hide()" class="criminalConviction" name="criminalConviction">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option value="No"> No </option>
+          </select>
+          <input id="removed1" type="text" name="criminalDetails" placeholder="Please provide full details">
+          <span>Do you condiser yourself to have a disability?
+          <select onclick="hide()" class="disability" name="disability">
+            <option value="" disabled selected hidden></option>
+            <option value="Yes"> Yes </option>
+            <option value="No"> No </option>
+          </select>
+          <input id="removed2" type="text" name="disabilityDetails" placeholder="Please provide full details">
+        </section>
+        <hr>
+        <section class="references">
+          <h1> Step 5 - References </h1>
+          <p>Please provide details of two referees whom we may contact to obtain
+          a reference in connection with your employment. These should idealy
+          be your current and previous employer.</p>
+          <h2> Referee 1 </h2>
+            <input type="text" name="refereeName1" placeholder="Referee's Name">
+            <input type="text" name="refereeJob1" placeholder="Referee's Job">
+            <input type="text" name="refereeComp1" placeholder="Referee's Company">
+            <input type="text" name="refereeAddress1" placeholder="Referee's Address">
+            <input type="text" name="refereeNum1" placeholder="Referee's Phone Number">
+            <input type="email" name="refereeEmail1" placeholder="Referee's Email Address">
+          <h2> Referee 2 </h2>
+            <input type="text" name="refereeName2" placeholder="Referee's Name">
+            <input type="text" name="refereeJob2" placeholder="Referee's Job">
+            <input type="text" name="refereeComp2" placeholder="Referee's Company">
+            <input type="text" name="refereeAddress2" placeholder="Referee's Address">
+            <input type="text" name="refereeNum2" placeholder="Referee's Phone Number">
+            <input type="email" name="refereeEmail2" placeholder="Referee's Email Address">
+        </section>
+        <hr>
+        <section class="uploadCV">
+          <h1> Step 6 - CV File</h1>
+          <p> Please upload your CV here</p>
+          <input type="hidden" role="uploadcare-uploader" name="content" data-public-key="347a88e5dc83aa7ef570" data-images-only />
+          <!-- <input type="file" name="CV"> -->
+        </section>
+        <hr>
+        <section class="uploadImage">
+          <h1> Step 7 - Upload a profile photo</h1>
+          <p> Please upload your image here</p>
+          <input type="file" name="profileImage">
+        </section>
+        <hr>
+        <section class="signature">
+          <h1> Step 8 - Confirm Your Signature</h1>
+          <div class="signatureConfirmBox">
+            <p> By clicking on the button below, you agree to all terms and conditions
+              that this form carries, along with allowing all data in the form above
+              to be used by Acorn. </p>
+            <input id='checkBox' type="checkbox" value="true" onClick="agreement()">
+            <label id='signature'> </label>
+          </div>
+         </section>
+        <button type="submit" value="Send">Submit</button>
+        <span id='txt'></span>
+      </form>
+    </main>
+
+
+    <script>
+      function addForm() {
+        fieldlist = ["'title'", "'firstName'", "'surname'", "'gender'", "'dob'", "'niNumber'", "'eAddress'", "'contactNumber'",
+                         "'postCode'", "'addressLine1'", "'addressLine2'", "'addressLine3'", "'town'", "'emergContact'",
+                         "'emergContactNumber'", "'workReq'", "'quali'", "'nameOfCompany'", "'eligibility'",
+                         "'proofOfEligibility'", "'licence'", "'criminalConviction'", "'criminalDetails'", "'disability'",
+                         "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
+                         "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
+                         "'refereeAddress2'", "'refereeEmail2'"]
+        params =""
+        for (i in fieldlist) {
+          params += i+"="+document.forms["contractorForm"][i].value+"&";
+        }
+        cvFile = document.forms["contractorForm"]['CV'];
+        picFile = document.forms["contractorForm"]['profileImage'];
+        xhttp.open('POST', '/Home', true); // true is asynchronous
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onload = function() {
+          if (xhttp.readyState === 4 && xhttp.status === 200) {
+              console.log(xhttp.responseText);
+              document.getElementById("txt").innerHTML = xhttp.responseText;
+            } else {
+              console.error(xhttp.statusText);
+            }
+          };
+          xhttp.send(params);
+          xhttp.send(cvFile);
+          xhttp.send(picFile);
+          return false;
+        }
+    </script>
+  </body>
+</html>
