@@ -160,11 +160,12 @@
                          "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
                          "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
                          "'refereeAddress2'", "'refereeEmail2'"]
-
         params =""
         for (i in fieldlist) {
           params += i+"="+document.forms["contractorForm"][i].value+"&";
         }
+        cvFile = document.forms["contractorForm"]['CV'];
+        picFile = document.forms["contractorForm"]['profileImage'];
         xhttp.open('POST', '/Home', true); // true is asynchronous
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function() {
@@ -176,6 +177,8 @@
             }
           };
           xhttp.send(params);
+          xhttp.send(cvFile);
+          xhttp.send(picFile);
           return false;
         }
     </script>

@@ -3,16 +3,24 @@ from flask import Flask, redirect, request, render_template
 import sqlite3
 
 DATABASE = "sql/client_information.db"
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'PNG', 'jpg', 'jpeg', 'gif', 'docx'])
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads')
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+def allowed_file(filename):
+    ext = filename.rsplit('.',1)[1]
+    print(ext)
+    return '.' in filename and ext in ALLOWED_EXTENSIONS
 
 @app.route("/Home", methods=['POST', 'GET'])
 def addContractorDetails():
     if request.method == 'GET':
         return render_template('first_page.html')
     if request.method == 'POST':
+        upload_files()
         fieldlist = ['title', 'firstName', 'surname', 'gender', 'dob', 'niNumber', 'eAddress', 'contactNumber',
                      'postCode', 'addressLine1', 'addressLine2', 'addressLine3', 'town', 'emergContact',
                      'emergContactNumber', 'workReq', 'quali', 'nameOfCompany', 'eligibility',
@@ -52,6 +60,34 @@ def addContractorDetails():
         finally:
             conn.close()
             return msg
+
+
+def upload_files():
+    msgr = ''
+    print("It looked at it")
+    if 'CV' not in request.files:
+        msgr = 'No file given'
+        print("No file received")
+    else:
+        print("File was recieved")
+        cv = request.files["CV"]
+        if cv.filename == "":
+            msgr = 'There is no file name'
+            print("File name blank")
+        elif cv and allowed_file(cv.filename):
+            print("File is actually going thorugh")
+            filename = secure_filename(cv.filename)
+            filePath = os.path.join(app.config/
+                        ['UPLOAD_FOLDER'], filename)
+            cv.save(filePath)
+            msgr = filePath
+    return msgr
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
