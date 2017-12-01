@@ -6,32 +6,40 @@
   <head>
     <title> Acorn Recuritment </title>
     <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
+    <link rel="stylesheet" type="text/css" href="..\static\css\admin.css">
     <style> #map {height: 400px; width: 400px;}</style>
   </head>
 
   <body>
 
     <header class="acornHeader">
-      <img id="logo" src="acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
+      <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
     </header>
 
     <main>
       <h1>Administration Page</h1>
-
-      <h3>Map of Contractors Addresses</h3>
-        <div id = "map"></div>
-
+      <hr>
+      <p>A page for administration of the form database and visual representations of said data</p>
+      <hr>
+      <h2>Map of Contractors Addresses</h2>
+      <div id = "map" class="unstyled"></div>
+      <hr>
+      <h2>Search Database</h2>
+      <form id="searchForm" action='/Admin' method='post'>
+        Surname:<input type="text" name="surname"><br>
+        <button type="submit">Submit Search</button>
+      </form>
     </main>
 
     <script>
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
+        var cardiff = {lat: 51.481, lng: -3.180};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
+          zoom: 15,
+          center: cardiff
         });
         var marker = new google.maps.Marker({
-          position: uluru,
+          position: cardiff,
           map: map
         });
       }
