@@ -21,6 +21,12 @@ def allowedFile(filename, filetype):
     if filetype =='PIC':
         return '.' in filename and ext in PIC_ALLOWED_EXTENSIONS
 
+@app.route("/Landing", methods=['GET'])
+def landingPage():
+    if request.method=='GET':
+        return render_template('landing_page.html')
+
+
 @app.route("/Form", methods=['POST', 'GET'])
 def addContractorDetails():
     if request.method == 'GET':
@@ -121,7 +127,7 @@ def adminSearch():
             conn.close()
         finally:
             conn.close()
-            return render_template('ListData.html', data = data)
+            return render_template('list_data.html', data = data)
 
 if __name__ == '__main__':
     app.run(debug=True)

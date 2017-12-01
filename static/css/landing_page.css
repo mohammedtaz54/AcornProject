@@ -1,0 +1,12 @@
+.#loginOrNew {
+  background-color:rgb(172,171,171);
+  padding:10px;
+  border-radius:5px;
+}
+
+#loginOrNew button {
+  width:100%;
+  font-size:25px;
+  margin-left:0px;
+  padding-top:20px;
+}

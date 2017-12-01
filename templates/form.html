@@ -15,7 +15,7 @@
       <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
       <input id="userName" type="text" name="userName" placeholder="User Name">
       <input id="password" type="password" name="password" placeholder="Password">
-      <button id="adminLogin" type="button">Admin Login</button>
+      <button id="adminLogin" type="submit" onClick="adminLogin()">Admin Login</button>
     </header>
     <main>
       <h1>Limited Company Contractor Registration Form </h1>
@@ -149,38 +149,5 @@
         <span id='txt'></span>
       </form>
     </main>
-
-
-    <script>
-      function addForm() {
-        fieldlist = ["'title'", "'firstName'", "'surname'", "'gender'", "'dob'", "'niNumber'", "'eAddress'", "'contactNumber'",
-                         "'postCode'", "'addressLine1'", "'addressLine2'", "'addressLine3'", "'town'", "'emergContact'",
-                         "'emergContactNumber'", "'workReq'", "'quali'", "'nameOfCompany'", "'eligibility'",
-                         "'proofOfEligibility'", "'licence'", "'criminalConviction'", "'criminalDetails'", "'disability'",
-                         "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
-                         "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
-                         "'refereeAddress2'", "'refereeEmail2'"]
-        params =""
-        for (i in fieldlist) {
-          params += i+"="+document.forms["contractorForm"][i].value+"&";
-        }
-        cvFile = document.forms["contractorForm"]['CV'];
-        picFile = document.forms["contractorForm"]['profileImage'];
-        xhttp.open('POST', '/Form', true); // true is asynchronous
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.onload = function() {
-          if (xhttp.readyState === 4 && xhttp.status === 200) {
-              console.log(xhttp.responseText);
-              document.getElementById("txt").innerHTML = xhttp.responseText;
-            } else {
-              console.error(xhttp.statusText);
-            }
-          };
-          xhttp.send(params);
-          xhttp.send(cvFile);
-          xhttp.send(picFile);
-          return false;
-        }
-    </script>
   </body>
 </html>
