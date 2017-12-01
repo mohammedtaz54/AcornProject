@@ -26,6 +26,10 @@ def landingPage():
     if request.method=='GET':
         return render_template('landing_page.html')
 
+@app.route("/Login", methods=['POST', 'GET'])
+def loginToForm():
+    if request.method=='GET':
+        return render_template('login.html')
 
 @app.route("/Form", methods=['POST', 'GET'])
 def addContractorDetails():
