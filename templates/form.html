@@ -13,9 +13,9 @@
   <body>
     <header class="acornHeader">
       <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
-      <input id="userName" type="text" name="userName" placeholder="User Name">
+      <!-- <input id="userName" type="text" name="userName" placeholder="User Name">
       <input id="password" type="password" name="password" placeholder="Password">
-      <button id="adminLogin" type="submit" onClick="adminLogin()">Admin Login</button>
+      <button id="adminLogin" type="submit" onClick="adminLogin()">Admin Login</button> -->
     </header>
     <main>
       <h1>Limited Company Contractor Registration Form </h1>
@@ -141,8 +141,10 @@
             <p> By clicking on the button below, you agree to all terms and conditions
               that this form carries, along with allowing all data in the form above
               to be used by Acorn. </p>
-            <input id='checkBox' type="checkbox" value="true" onClick="agreement()">
-            <label id='signature'> </label>
+            <div id="sig">
+              <input id='checkBox' type="checkbox" value="true" onClick="agreement()">
+              <label id='signature'> </label>
+            </div>
           </div>
          </section>
         <button type="submit" id="submitForm">Submit</button>
