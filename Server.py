@@ -125,7 +125,6 @@ def adminSearch():
         return render_template('admin.html')
     if request.method == 'POST':
         try:
-            print("passed try")
             surname = request.form.get('surname', default="Error")
             conn = sqlite3.connect(DATABASE)
             cur = conn.cursor()
