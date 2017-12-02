@@ -7,6 +7,11 @@ for(var i = 0; hidden != 0; i++){
 hidden[i].style.display = "none"
 };
 
+function validateIt(){
+
+
+}
+
 function progression() {
 
     if (hidden[0].style.display === "none") {
