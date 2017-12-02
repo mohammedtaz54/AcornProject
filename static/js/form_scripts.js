@@ -17,7 +17,6 @@ function addForm() {
   xhttp.onload = function() {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
         console.log(xhttp.responseText);
-        document.getElementById("txt").innerHTML = xhttp.responseText;
       } else {
         console.error(xhttp.statusText);
       }
@@ -27,6 +26,25 @@ function addForm() {
     xhttp.send(picFile);
     return false;
   }
+
+function submitLogin(){
+  userName = document.forms["loginDetails"]['userName'];
+  password = document.forms["loginDetails"]['Password'];
+  uniqueID = document.forms["loginDetails"]['uniqueID'];
+  dataValues = 'userName='+userName+'&password='+password+'&uniqueID='+uniqueID;
+  xhttp.open('POST', '/Login', true); // true is asynchronous
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.onload = function() {
+    if (xhttp.readyState === 4 && xhttp.status === 200) {
+        console.log(xhttp.responseText);
+      } else {
+        console.error(xhttp.statusText);
+      }
+    };
+    xhttp.send(dataValues);
+    return false;
+  }
+}
 
 function adminLogin() {
   username = document.getElementById('userName').value;

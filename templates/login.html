@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+
+<!-- Please check the notes in resources/helpful_notes.txt for information -->
+
+<html lang=en>
+  <head>
+    <title> Acorn Recuritment </title>
+    <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
+    <link rel="stylesheet" type="text/css" href="..\static\css\login.css">
+  </head>
+
+  <body>
+    <header class="acornHeader">
+      <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
+    </header>
+    <main>
+      <h1>Login</h1>
+      <hr>
+      <p>Please provide your login details. If you have forgotten your username or unique ID
+        number, you can check the email you received when you first signed up</p>
+      <hr>
+      <form id="loginDetails" onsubmit="return submitLogin()" method="post">
+        <div id="textBoxes">
+          <input type="text" name="userName" placeholder="User Name">
+          <input type="password" name="password" placeholder="Password">
+          <input type="number" name="uniqueID" placeholder="Unique ID">
+        </div>
+        <div id="buttonHolder">
+          <button type="submit" id="submitLogin">Login</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

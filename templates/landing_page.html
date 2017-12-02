@@ -7,7 +7,6 @@
     <title> Acorn Recuritment </title>
     <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
     <link rel="stylesheet" type="text/css" href="..\static\css\landing_page.css">
-    <script src="../static/js/form_scripts.js"></script>
   </head>
 
   <body>
@@ -19,11 +18,11 @@
       <hr>
       <p>Welcome! Are you a returning user, or a new one?</p>
       <hr>
-      <div id="loginOrNew">
-        <form action='/Login' method='get'>
+      <div class="loginOrNew">
+        <form class="options" action='/Login' method='get'>
           <button type="submit">I am a returning user</button>
         </form>
-        <form action='/Form' method='get'>
+        <form class="options" action='/Form' method='get'>
           <button type="submit">I am a first time user</button>
         </form>
       </div>

@@ -30,6 +30,12 @@ def landingPage():
 def loginToForm():
     if request.method=='GET':
         return render_template('login.html')
+    if request.method=='POST':
+        userName = request.form.get('userName', default="Error")
+        password = request.form.get('password', default="Error")
+        uniqueID = request.form.get('uniqueID', default="Error")
+        if userName == 'admin' and password == 'admin' and uniqueID == '555':
+            return render_template('admin.html')
 
 @app.route("/Form", methods=['POST', 'GET'])
 def addContractorDetails():
