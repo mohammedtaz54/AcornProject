@@ -139,5 +139,9 @@ def adminSearch():
             conn.close()
             return render_template('list_data.html', data = data)
 
+@app.route('/Email')
+def email():
+    return render_template('inProgressPages/emailing_page.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
