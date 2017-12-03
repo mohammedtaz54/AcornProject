@@ -42,7 +42,7 @@
             <option value="Prefer not to say"> Prefer not to say </option>
           </select>
           <input type="text" name="dob" placeholder="Date of Birth" required>
-          <input onclick="progression()" type="text" name="niNumber" placeholder="National Insurance Number" autocomplete="off">
+          <input title="If you dont have a national insurance number leave blank" onclick="progression()" type="text" name="niNumber" placeholder="National Insurance Number" autocomplete="off">
         </section>
         <hr>
         <section class="progress" class="contactInfo">
@@ -66,9 +66,9 @@
         <hr>
         <section class="progress" class="workInfo">
           <h1> Step 3 - Work Information</h1>
-          <input type="text" name="workReq" placeholder="Type of Work Required:">
-          <input type="text" name="quali" placeholder="Qualifications / Licences held:">
-          <input onclick="progression2()"  type="text" name="nameOfCompany" placeholder="Name of Company">
+          <input title="What type of work are you looking for?" type="text" name="workReq" placeholder="Type of Work Required:">
+          <input title="What is the highest qualification you have currently" type="text" name="quali" placeholder="Qualifications / Licences held:">
+          <input title="Enter the last company that you worked for" onclick="progression2()" type="text" name="nameOfCompany" placeholder="Name of Company">
         </section>
         <hr>
         <section class="progress" class="extendedInfo">
@@ -93,14 +93,14 @@
             <option value="Yes"> Yes </option>
             <option value="No"> No </option>
           </select>
-          <input id="removed1" type="text" name="criminalDetails" placeholder="Please provide full details">
+          <input title="State any criminal convictions you have had in the past" id="removed1" type="text" name="criminalDetails" placeholder="Please provide full details">
           <span>Do you condiser yourself to have a disability?
           <select onclick="hide()" class="disability" name="disability">
             <option value="" disabled selected hidden></option>
             <option value="Yes"> Yes </option>
             <option value="No"> No </option>
           </select>
-          <input onclick="progression3()"  id="removed2" type="text" name="disabilityDetails" placeholder="Please provide full details">
+          <input title="Please name any disability's you have" onclick="progression3()"  id="removed2" type="text" name="disabilityDetails" placeholder="Please provide full details">
         </section>
         <hr>
         <section class="progress" class="references">
