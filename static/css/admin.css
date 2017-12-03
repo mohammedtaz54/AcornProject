@@ -1,15 +1,29 @@
-* {
+h2 {
+  font-size: 24px;
+  color:rgb(28,58,93);
+  margin-left:30px;
+}
+
+.unstyle {
+  width:100% !important;
+  border:1px solid black;
+}
+
+input {
+  display:block;
+  width: 40%;
   margin:10px;
-  padding:0px;
-  background-color:rgb(237,237,237);
+  padding:10px;
+  border-radius: 8px;
+  border: 1px solid rgb(112,111,111);
 }
 
-@font-face {
-  font-family: sm;
-  src: url('../acorn_res/myriad_pro/MyriadPro-Regular.otf');
-}
-
-.acornHeader {
-  display:inline-block;
-  width:100%
+button {
+  display:block;
+  min-height: 35px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgb(200, 0, 0);
+  color: white;
+  margin-left: 400px;
 }

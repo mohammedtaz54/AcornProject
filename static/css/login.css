@@ -1,0 +1,37 @@
+#loginDetails {
+  background-color:rgb(172,171,171);
+  padding:10px;
+  margin:10px;
+  border-radius:5px;
+}
+
+#textBoxes{
+  padding-right:10px;
+  margin:10px;
+  background-color:rgb(172,171,171);
+}
+
+#textBoxes input {
+  font-size:18px;
+  width:100%;
+  display:block;
+  border-radius: 8px;
+  margin-left: 0px;
+  border: 1px solid rgb(112,111,111);
+  padding:5px;
+}
+
+#buttonHolder {
+  text-align: center;
+  background-color:rgb(172,171,171);
+}
+
+#submitLogin {
+  display:inline-block;
+  width:10%;
+  min-height: 35px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgb(200, 0, 0);
+  color: white;
+}

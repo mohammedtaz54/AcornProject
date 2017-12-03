@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<!-- Please check the notes in resources/helpful_notes.txt for information -->
+
+<html lang=en>
+  <head>
+    <title> Acorn Recuritment </title>
+    <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
+    <link rel="stylesheet" type="text/css" href="..\static\css\admin.css">
+  </head>
+  <body>
+    <header class="acornHeader">
+      <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
+    </header>
+    <main>
+      <h1>Administration Page</h1>
+      <hr>
+      <p>Printout of database search</p>
+      <hr>
+      <h2>Contractors</h2>
+      <table border = 1>
+        <thread>
+          <td>ID</td>
+          <td>title</td>
+          <td>firstName</td>
+          <td>surname</td>
+          <td>gender</td>
+        </thread>
+
+        {% for row in data %}
+
+        <tr>
+          <td>{{row[0]}}</td>
+          <td>{{row[1]}}</td>
+          <td>{{row[2]}}</td>
+          <td>{{row[3]}}</td>
+          <td>{{row[4]}}</td>
+        </tr>
+      {% endfor %}
+    </table>

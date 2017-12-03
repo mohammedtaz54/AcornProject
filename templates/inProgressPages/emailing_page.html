@@ -6,8 +6,14 @@
   <head>
     <title> Acorn Recuritment </title>
     <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
+<<<<<<< HEAD:templates/first_page.html
     <script src="../static/js/form_data.js"></script>
 
+=======
+    <script src="../static/js/form_scripts.js"></script>
+    <script src="../static/js/validation.js"></script>
+    <script charset="utf-8" src="https://ucarecdn.com/libs/widget/3.2.1/uploadcare.full.min.js"></script>
+>>>>>>> 3afd1e8400d0e61b81078b7cc31a662c8a58fbc3:templates/inProgressPages/emailing_page.html
   </head>
 
   <body>
@@ -22,7 +28,8 @@
       <hr>
       <p>Please fill out all input fields fully, and if you need any extra information, just hover over the field with your cursor</p>
       <hr>
-      <form id='contractorForm' onsubmit="return addForm()" method="post">
+      <!-- <form id='contractorForm' onsubmit="return addForm()" method="post" autocomplete="on" enctype="multipart/form-data" action=""> -->
+      <form action="https://formspree.io/arslanmazlum1@gmail.com" method="POST">
         <section class="personalDetails">
           <h1> Step 1 - Personal Details</h1>
           <select class="title" name="title">
@@ -40,8 +47,13 @@
             <option value="Female"> Female </option>
             <option value="Prefer not to say"> Prefer not to say </option>
           </select>
+<<<<<<< HEAD:templates/first_page.html
           <input onclick="progression()" type="text" name="dob" placeholder="Date of Birth">
           <input type="text" name="niNumber" placeholder="National Insurance Number">
+=======
+          <input type="text" name="dob" placeholder="Date of Birth">
+          <input type="text" name="niNumber" placeholder="National Insurance Number" autocomplete="off">
+>>>>>>> 3afd1e8400d0e61b81078b7cc31a662c8a58fbc3:templates/inProgressPages/emailing_page.html
         </section>
         <hr>
         <section class="progress" class="contactInfo">
@@ -57,7 +69,7 @@
             <input type="text" name="addressLine2" placeholder="Address Line 2">
             <input type="text" name="addressLine3" placeholder="Address Line 3">
             <input type="text" name="town" placeholder="town">
-          <!--</form>-->
+          <!-- </form> -->
 
           <input title="No spaces needed" type="text" name="emergContact" placeholder="Emergency Contact Name">
           <input title="No spaces needed" type="text" name="emergContactNumber" placeholder="Emergency Contact Number">
@@ -126,15 +138,27 @@
         <section class="progress" class="uploadCV">
           <h1> Step 6 - CV File</h1>
           <p> Please upload your CV here</p>
-          <input type="file" name="CV">
+          <input type="hidden" role="uploadcare-uploader" name="content" data-public-key="347a88e5dc83aa7ef570" />
+          <!-- <input type="file" name="CV"> -->
         </section>
         <hr>
         <section class="progress" class="uploadImage">
           <h1> Step 7 - Upload a profile photo</h1>
           <p> Please upload your image here</p>
-          <input type="file" name="profileImage">
+          <input type="hidden" role="uploadcare-uploader" name="content" data-public-key="347a88e5dc83aa7ef570" data-images-only />
         </section>
-        <button type="submit">Submit</button>
+        <hr>
+        <section class="signature">
+          <h1> Step 8 - Confirm Your Signature</h1>
+          <div class="signatureConfirmBox">
+            <p> By clicking on the button below, you agree to all terms and conditions
+              that this form carries, along with allowing all data in the form above
+              to be used by Acorn. </p>
+            <input id='checkBox' type="checkbox" value="true" onClick="agreement()">
+            <label id='signature'> </label>
+          </div>
+         </section>
+        <button type="submit" value="Send">Submit</button>
         <span id='txt'></span>
       </form>
     </main>
@@ -149,11 +173,12 @@
                          "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
                          "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
                          "'refereeAddress2'", "'refereeEmail2'"]
-
         params =""
         for (i in fieldlist) {
           params += i+"="+document.forms["contractorForm"][i].value+"&";
         }
+        cvFile = document.forms["contractorForm"]['CV'];
+        picFile = document.forms["contractorForm"]['profileImage'];
         xhttp.open('POST', '/Home', true); // true is asynchronous
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function() {
@@ -165,12 +190,17 @@
             }
           };
           xhttp.send(params);
+          xhttp.send(cvFile);
+          xhttp.send(picFile);
           return false;
         }
     </script>
+<<<<<<< HEAD:templates/first_page.html
 
 
     </script>
     <script src="../static/js/taking_steps.js"></script>
+=======
+>>>>>>> 3afd1e8400d0e61b81078b7cc31a662c8a58fbc3:templates/inProgressPages/emailing_page.html
   </body>
 </html>
