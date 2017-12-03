@@ -84,7 +84,7 @@ def addContractorDetails():
             msg = "error in insert operation"
         finally:
             conn.close()
-            return msg
+            return render_template("form_completion.html")
 
 def cvUpload():
     if 'CV' not in request.files:
