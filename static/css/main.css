@@ -84,13 +84,16 @@ h2 {
   background-color:rgb(172,171,171);
 }
 
+#sig {
+  background-color:rgb(172,171,171);
+  display:flex;
+}
+
 #checkBox {
-  display:inline;
   width:25%;
 }
 
 #signature {
-  display:inline;
   width:50%;
   background-color:rgb(172,171,171);
 }

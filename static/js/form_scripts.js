@@ -35,15 +35,14 @@ function submitLogin(){
   xhttp.open('POST', '/Login', true); // true is asynchronous
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.onload = function() {
-    if (xhttp.readyState === 4 && xhttp.status === 200) {
-        console.log(xhttp.responseText);
-      } else {
-        console.error(xhttp.statusText);
-      }
-    };
-    xhttp.send(dataValues);
-    return false;
-  }
+  if (xhttp.readyState === 4 && xhttp.status === 200) {
+      console.log(xhttp.responseText);
+    } else {
+      console.error(xhttp.statusText);
+    }
+  };
+  xhttp.send(dataValues);
+  return false;
 }
 
 function adminLogin() {
