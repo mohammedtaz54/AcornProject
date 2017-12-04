@@ -47,17 +47,17 @@
         <hr>
         <section class="progress" class="contactInfo">
           <h1> Step 2 - Contact Information</h1>
-          <input title="Make sure it is a valid email" type="email" name="eAddress" placeholder="Email Address">
-          <input title="Check if emails match" type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()">
-          <input title="No spaces needed" onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number">
+          <input title="Make sure it is a valid email" type="email" name="eAddress" placeholder="Email Address" required>
+          <input title="Check if emails match" type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()" required>
+          <input title="No spaces needed" onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number" required>
           <!-- <form method="post" name="addressLook"> -->
-          <input title="Please enter your postcode like this XXX XXX" type="text" name="postCode" placeholder="Postal Code">
+          <input title="Please enter your postcode like this XXX XXX" type="text" name="postCode" placeholder="Postal Code" required>
             <!-- <button type="button" onclick="cp_obj.doLookup()">Find Address</button>
             <span id="crafty_postcode_result_display">&nbsp;</span><br/> -->
-            <input title="Please enter your primary address" type="text" name="addressLine1" placeholder="Address Line 1">
+            <input title="Please enter your primary address" type="text" name="addressLine1" placeholder="Address Line 1" required>
             <input title="Please enter your secondary address" type="text" name="addressLine2" placeholder="Address Line 2">
             <input title="Please enter your third address" type="text" name="addressLine3" placeholder="Address Line 3">
-            <input type="text" name="town" placeholder="town">
+            <input type="text" name="town" placeholder="town" required>
           <!--</form>-->
 
           <input title="No spaces needed" type="text" name="emergContact" placeholder="Emergency Contact Name">
@@ -66,7 +66,7 @@
         <hr>
         <section class="progress" class="workInfo">
           <h1> Step 3 - Work Information</h1>
-          <input title="What type of work are you looking for?" type="text" name="workReq" placeholder="Type of Work Required:">
+          <input title="What type of work are you looking for?" type="text" name="workReq" placeholder="Type of Work Required:" required>
           <input title="What is the highest qualification you have currently" type="text" name="quali" placeholder="Qualifications / Licences held:">
           <input title="Enter the last company that you worked for" onclick="progression2()" type="text" name="nameOfCompany" placeholder="Name of Company">
         </section>
@@ -79,7 +79,7 @@
             <option value="Yes"> Yes </option>
             <option  value="No"> No </option>
           </select>
-          <input id="removed" type="text" name="proofOfEligibility" placeholder="Please detail which documents you will provide as proof">
+          <input id="removed" type="text" name="proofOfEligibility" placeholder="Please detail which documents you will provide as proof" required>
           <span>Do you have a current UK driving licence?
           <select class="licence" name="licence">
             <option value="" disabled selected hidden></option>
@@ -127,7 +127,7 @@
         <section class="progress" class="uploadCV">
           <h1> Step 6 - CV File</h1>
           <p> Please upload your CV here</p>
-          <input type="file" name="CV">
+          <input type="file" name="CV" required>
         </section>
         <hr>
         <section class="progress" class="uploadImage">
@@ -143,7 +143,7 @@
               that this form carries, along with allowing all data in the form above
               to be used by Acorn. </p>
             <div id="sig">
-              <input id='checkBox' type="checkbox" value="true" onClick="agreement()">
+              <input id='checkBox' type="checkbox" value="true" onClick="agreement()" required>
               <label id='signature'> </label>
             </div>
           </div>
