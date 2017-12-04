@@ -4,9 +4,14 @@ h2 {
   margin-left:30px;
 }
 
-.unstyle {
-  width:100% !important;
-  border:1px solid black;
+.test div{
+    background: transparent;
+}
+
+#map{
+    border:1px solid black;
+    width:100% !important;
+    margin-left: 0px;
 }
 
 input {
