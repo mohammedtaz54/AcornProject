@@ -1,8 +1,17 @@
 html {
-  margin:10px;
+  margin:0;
   padding:0px;
   background-color:rgb(237,237,237);
   font-family: firstFont;
+}
+
+
+main{
+  text-align: center;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @font-face {
@@ -50,19 +59,25 @@ h1 {
 #contractorForm input {
   display:block;
   width: 40%;
-  margin:10px;
+  margin-left: auto;
+  margin-right: auto;
   padding:10px;
   border-radius: 8px;
   border: 1px solid rgb(112,111,111);
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 #contractorForm select {
   display:block;
   width: 20%;
-  margin:10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
   min-height:30px;
   border-radius: 8px;
   border: 1px solid rgb(112,111,111);
+  margin-bottom: 1%;
 }
 
 h2 {

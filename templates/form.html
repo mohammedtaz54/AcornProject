@@ -18,11 +18,13 @@
       <input id="password" type="password" name="password" placeholder="Password">
       <button id="adminLogin" type="submit" onClick="adminLogin()">Admin Login</button> -->
     </header>
+
     <main>
       <h1>Limited Company Contractor Registration Form </h1>
       <hr>
       <p>Please fill out all input fields fully, and if you need any extra information, just hover over the field with your cursor</p>
       <hr>
+
       <form id='contractorForm' onsubmit="return addForm()" method="post" autocomplete="on" enctype="multipart/form-data">
         <section class="personalDetails">
           <h1> Step 1 - Personal Details</h1>
@@ -33,8 +35,11 @@
             <option value="Mrs."> Mrs.</option>
             <option value="Ms."> Ms.</option>
           </select>
+          <div>
           <input type="text" name="firstName" placeholder="First Name" required>
-          <input type="text" name="surname" placeholder="Surname" required>
+          <div id="look" >
+          <input class="work" type="text" name="surname" placeholder="Surname" required>
+          </div>
           <select class="gender" name="gender" required>
             <option value="Gender" disabled selected hidden> Gender </option>
             <option value="Male"> Male </option>
@@ -45,6 +50,7 @@
           <input title="If you dont have a national insurance number leave blank" onclick="progression()" type="text" name="niNumber" placeholder="National Insurance Number" autocomplete="off">
         </section>
         <hr>
+        <div>
         <section class="progress" class="contactInfo">
           <h1> Step 2 - Contact Information</h1>
           <input title="Make sure it is a valid email" type="email" name="eAddress" placeholder="Email Address" required>
@@ -59,10 +65,10 @@
             <input title="Please enter your third address" type="text" name="addressLine3" placeholder="Address Line 3">
             <input type="text" name="town" placeholder="town" required>
           <!--</form>-->
-
           <input title="No spaces needed" type="text" name="emergContact" placeholder="Emergency Contact Name">
           <input onclick="progression1()" title="No spaces needed" type="text" name="emergContactNumber" placeholder="Emergency Contact Number">
         </section>
+      </div>
         <hr>
         <section class="progress" class="workInfo">
           <h1> Step 3 - Work Information</h1>
@@ -149,8 +155,11 @@
           </div>
          </section>
         <button type="submit" id="submitForm">Submit</button>
+        </div>
       </form>
+
     </main>
+
     <script src="../static/js/taking_steps.js"></script>
   </body>
 </html>
