@@ -5,7 +5,7 @@ function addForm() {
                    "'proofOfEligibility'", "'licence'", "'criminalConviction'", "'criminalDetails'", "'disability'",
                    "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
                    "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
-                   "'refereeAddress2'", "'refereeEmail2'"]
+                   "'refereeAddress2'", "'refereeEmail2', 'userName', 'passWord'"]
   params =""
   for (i in fieldlist) {
     params += i+"="+document.forms["contractorForm"][i].value+"&";
@@ -29,7 +29,7 @@ function addForm() {
 
 function submitLogin(){
   userName = document.forms["loginDetails"]['userName'];
-  password = document.forms["loginDetails"]['Password'];
+  password = document.forms["loginDetails"]['passWord'];
   uniqueID = document.forms["loginDetails"]['uniqueID'];
   dataValues = 'userName='+userName+'&password='+password+'&uniqueID='+uniqueID;
   xhttp.open('POST', '/Login', true); // true is asynchronous

@@ -57,6 +57,7 @@ def addContractorDetails():
             valuelist.append(request.form.get(i, default="Error"))
         userID = random.randint(0, 9999)
         print("inserting contractor " + valuelist[1])
+        print (valuelist)
         try:
             print ('1')
             conn = sqlite3.connect(DATABASE)
@@ -70,7 +71,7 @@ def addContractorDetails():
                                     'criminalConviction', 'criminalDetails', 'disability','disabilityDetails',\
                                     'refereeName1', 'refereeJob1', 'refereeComp1', 'refereeAddress1','refereeNum1',\
                                     'refereeEmail1','refereeName2', 'refereeJob2', 'refereeComp2','refereeAddress2',\
-                                    'refereeNum2','refereeEmail2','userName','passWord' 'cvFilePath', 'picFilePath')\
+                                    'refereeNum2','refereeEmail2','userName','passWord', 'cvFilePath', 'picFilePath')\
                         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (userID,\
                                 valuelist[0],valuelist[1], valuelist[2], valuelist[3], valuelist[4],\
                                 valuelist[5],valuelist[6], valuelist[7], valuelist[8], valuelist[9],\
@@ -80,6 +81,7 @@ def addContractorDetails():
                                 valuelist[25],valuelist[26], valuelist[27], valuelist[28], valuelist[29],\
                                 valuelist[30],valuelist[31], valuelist[32], valuelist[33], valuelist[34],\
                                 valuelist[35],valuelist[36], valuelist[37], valuelist[38], cvPath, picPath))
+            print(3.5)
             conn.commit()
             print ('4')
             msg = "Record sucessfully added"
