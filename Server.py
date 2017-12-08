@@ -58,8 +58,11 @@ def addContractorDetails():
         userID = random.randint(0, 9999)
         print("inserting contractor " + valuelist[1])
         try:
+            print ('1')
             conn = sqlite3.connect(DATABASE)
+            print ('2')
             cur = conn.cursor()
+            print ('3')
             cur.execute("INSERT INTO form_data ('userID', 'title', 'firstName', 'surname', 'gender',\
                                     'dob', 'niNumber', 'eAddress', 'contactNumber','postCode', 'addressLine1',\
                                     'addressLine2', 'addressLine3', 'town', 'emergContact','emergContactNumber',\
@@ -78,7 +81,9 @@ def addContractorDetails():
                                 valuelist[30],valuelist[31], valuelist[32], valuelist[33], valuelist[34],\
                                 valuelist[35],valuelist[36], valuelist[37], valuelist[38], cvPath, picPath))
             conn.commit()
+            print ('4')
             msg = "Record sucessfully added"
+            print ('5')
         except:
             conn.rollback()
             msg = "error in insert operation"
