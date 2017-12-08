@@ -14,9 +14,6 @@
   <body>
     <header class="acornHeader">
       <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
-      <!-- <input id="userName" type="text" name="userName" placeholder="User Name">
-      <input id="password" type="password" name="password" placeholder="Password">
-      <button id="adminLogin" type="submit" onClick="adminLogin()">Admin Login</button> -->
     </header>
     <main>
       <h1>Limited Company Contractor Registration Form </h1>
@@ -33,40 +30,31 @@
             <option value="Mrs."> Mrs.</option>
             <option value="Ms."> Ms.</option>
           </select>
-          <div>
           <input type="text" name="firstName" placeholder="First Name"  >
-          <div id="look" >
           <input class="work" type="text" name="surname" placeholder="Surname"  >
-          </div>
-          <select class="gender" name="gender"  >
+          <select class="gender" name="gender">
             <option value="Gender" disabled selected hidden> Gender </option>
             <option value="Male"> Male </option>
             <option value="Female"> Female </option>
             <option value="Prefer not to say"> Prefer not to say </option>
           </select>
-          <input type="text" name="dob" placeholder="Date of Birth"  >
+          <input type="text" name="dob" placeholder="Date of Birth">
           <input title="If you dont have a national insurance number leave blank" onclick="progression()" type="text" name="niNumber" placeholder="National Insurance Number" autocomplete="off">
         </section>
         <hr>
-        <div>
         <section class="progress" class="contactInfo">
           <h1> Step 2 - Contact Information</h1>
-          <input title="Make sure it is a valid email" type="email" name="eAddress" placeholder="Email Address"  >
-          <input title="Check if emails match" type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()"  >
-          <input title="No spaces needed" onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number"  >
-          <!-- <form method="post" name="addressLook"> -->
-          <input title="Please enter your postcode like this XXX XXX" type="text" name="postCode" placeholder="Postal Code"  >
-            <!-- <button type="button" onclick="cp_obj.doLookup()">Find Address</button>
-            <span id="crafty_postcode_result_display">&nbsp;</span><br/> -->
-            <input title="Please enter your primary address" type="text" name="addressLine1" placeholder="Address Line 1"  >
-            <input title="Please enter your secondary address" type="text" name="addressLine2" placeholder="Address Line 2">
-            <input title="Please enter your third address" type="text" name="addressLine3" placeholder="Address Line 3">
-            <input type="text" name="town" placeholder="town"  >
-          <!--</form>-->
+          <input type="email" name="eAddress" placeholder="Email Address">
+          <input type="email" name="confirmEAddress" placeholder="Confirm Email Address" onblur="confirmEmail()"  >
+          <input title="No spaces needed" onclick="eValidate()" type="text" name="contactNumber" placeholder="Contact Phone Number">
+          <input title="Please enter your postcode like this XXX XXX" type="text" name="postCode" placeholder="Postal Code">
+          <input type="text" name="addressLine1" placeholder="Address Line 1">
+          <input type="text" name="addressLine2" placeholder="Address Line 2">
+          <input type="text" name="addressLine3" placeholder="Address Line 3">
+          <input type="text" name="town" placeholder="Town">
           <input title="No spaces needed" type="text" name="emergContact" placeholder="Emergency Contact Name">
           <input onclick="progression1()" title="No spaces needed" type="text" name="emergContactNumber" placeholder="Emergency Contact Number">
         </section>
-      </div>
         <hr>
         <section class="progress" class="workInfo">
           <h1> Step 3 - Work Information</h1>
@@ -153,7 +141,6 @@
           </div>
          </section>
         <button type="submit" id="submitForm">Submit</button>
-        </div>
       </form>
     </main>
     <script src="../static/js/taking_steps.js"></script>

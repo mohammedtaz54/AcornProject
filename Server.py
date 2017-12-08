@@ -97,7 +97,7 @@ def cvUpload():
             filename = secureFilename(cv.filename, 'CV')
             filePath = os.path.join(app.config['CV_UPLOAD_FOLDER'], filename)
             cv.save(filePath)
-    return filePath
+            return filePath
 
 def picUpload() :
     if 'profileImage' not in request.files:
@@ -110,7 +110,7 @@ def picUpload() :
             filename = secureFilename(pic.filename, 'Picture')
             filePath = os.path.join(app.config['PIC_UPLOAD_FOLDER'], filename)
             pic.save(filePath)
-    return filePath
+            return filePath
 
 def secureFilename(filename, filetype):
     first = request.form.get('firstName')
@@ -121,7 +121,13 @@ def secureFilename(filename, filetype):
 @app.route("/Admin", methods=['POST', 'GET'])
 def adminSearch():
     if request.method == 'GET':
-        return render_template('admin.html')
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT postCode FROM form_data")
+        data = cur.fetchall()
+        usableData = [x[0] for x in data]
+        print(usableData)
+        return render_template('admin.html',data=usableData)
     if request.method == 'POST':
         try:
             surname = request.form.get('surname', default="Error")

@@ -25,7 +25,7 @@ function addForm() {
     xhttp.send(cvFile);
     xhttp.send(picFile);
     return false;
-  }
+}
 
 function submitLogin(){
   userName = document.forms["loginDetails"]['userName'];
@@ -50,7 +50,6 @@ function adminLogin() {
   password = document.getElementById('password').value;
   if(username == 'admin' && password == 'admin'){
     xhttp.open('POST', '/Admin', true); // true is asynchronous
-
   }
 }
 
