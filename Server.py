@@ -51,13 +51,12 @@ def addContractorDetails():
                      'proofOfEligibility', 'licence', 'criminalConviction', 'criminalDetails', 'disability',
                      'disabilityDetails', 'refereeName1', 'refereeJob1', 'refereeComp1', 'refereeAddress1',
                      'refereeNum1', 'refereeEmail1', 'refereeName2', 'refereeJob2', 'refereeComp2', 'refereeNum2',
-                     'refereeAddress2', 'refereeEmail2', 'userName', 'passWord']
+                     'refereeAddress2', 'refereeEmail2', 'userName', 'password']
         valuelist = []
         for i in fieldlist:
             valuelist.append(request.form.get(i, default="Error"))
         userID = random.randint(0, 9999)
         print("inserting contractor " + valuelist[1])
-        print (valuelist)
         try:
             conn = sqlite3.connect(DATABASE)
             cur = conn.cursor()
@@ -68,7 +67,7 @@ def addContractorDetails():
                                     'criminalConviction', 'criminalDetails', 'disability','disabilityDetails',\
                                     'refereeName1', 'refereeJob1', 'refereeComp1', 'refereeAddress1','refereeNum1',\
                                     'refereeEmail1','refereeName2', 'refereeJob2', 'refereeComp2','refereeAddress2',\
-                                    'refereeNum2','refereeEmail2','userName','passWord', 'cvFilePath', 'picFilePath')\
+                                    'refereeNum2','refereeEmail2','userName','password', 'cvFilePath', 'picFilePath')\
                         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (userID,\
                                 valuelist[0],valuelist[1], valuelist[2], valuelist[3], valuelist[4],\
                                 valuelist[5],valuelist[6], valuelist[7], valuelist[8], valuelist[9],\

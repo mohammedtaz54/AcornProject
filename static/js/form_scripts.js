@@ -5,7 +5,7 @@ function addForm() {
                    "'proofOfEligibility'", "'licence'", "'criminalConviction'", "'criminalDetails'", "'disability'",
                    "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
                    "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
-                   "'refereeAddress2'", "'refereeEmail2', 'userName', 'passWord'"]
+                   "'refereeAddress2'", "'refereeEmail2'", "'userName'", "'password'"]
   params =""
   for (i in fieldlist) {
     params += i+"="+document.forms["contractorForm"][i].value+"&";
@@ -27,32 +27,6 @@ function addForm() {
     return false;
 }
 
-function submitLogin(){
-  userName = document.forms["loginDetails"]['userName'];
-  password = document.forms["loginDetails"]['passWord'];
-  uniqueID = document.forms["loginDetails"]['uniqueID'];
-  dataValues = 'userName='+userName+'&password='+password+'&uniqueID='+uniqueID;
-  xhttp.open('POST', '/Login', true); // true is asynchronous
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.onload = function() {
-  if (xhttp.readyState === 4 && xhttp.status === 200) {
-      console.log(xhttp.responseText);
-    } else {
-      console.error(xhttp.statusText);
-    }
-  };
-  xhttp.send(dataValues);
-  return false;
-}
-
-function adminLogin() {
-  username = document.getElementById('userName').value;
-  password = document.getElementById('password').value;
-  if(username == 'admin' && password == 'admin'){
-    xhttp.open('POST', '/Admin', true); // true is asynchronous
-  }
-}
-
 function confirmEmail() {
   var email = document.forms["contractorForm"]['eAddress'].value;
   var confemail = document.forms["contractorForm"]['confirmEAddress'].value;
@@ -63,6 +37,19 @@ function confirmEmail() {
   } else{
     email.style.borderColor="rgb(112,111,111)";
     confemail.style.borderColor="rgb(112,111,111)";
+  }
+}
+
+function confirmPassword() {
+  var pass = document.forms["contractorForm"]['password'].value;
+  var confpass = document.forms["contractorForm"]['confirmPassword'].value;
+  if(pass != confpass) {
+    alert('Passwords Not Matching!');
+    pass.style.borderColor="red";
+    confpass.style.borderColor="red";
+  } else{
+    pass.style.borderColor="rgb(112,111,111)";
+    confpass.style.borderColor="rgb(112,111,111)";
   }
 }
 
