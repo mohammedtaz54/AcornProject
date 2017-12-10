@@ -43,7 +43,7 @@ def loginToForm():
             try:
                 conn = sqlite3.connect(DATABASE)
                 cur = conn.cursor()
-                cur.execute('SELECT * FROM accountAndUploads WHERE userName = "%s" AND password = "%s" '%(userNa,passWo))
+                cur.execute('SELECT * FROM accountAndUploads WHERE userName = "%s" AND password = "%s" '%(userName,password))
                 if cur.fetchone() is not None:
                     return render_template('updateInfo.html')
                     msg = "User has been logged in sucessfully"
