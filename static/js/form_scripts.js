@@ -3,10 +3,11 @@ function sendData(){
   var data = new FormData(form);
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/Form', true);
+  xhr.open("POST", '/Form', true);
   xhr.onload = function(){
     if (xhr.readyState === 4 && xhr.status === 200){
       console.log(xhr.responseText);
+      if (xhr.responseText.includes("<head>")) window.location ="/FormCompletion";
     } else {
       console.log(xhr.responseText);
     }
@@ -14,6 +15,41 @@ function sendData(){
   xhr.send(data);
   return false;
 }
+
+//   getPDF(function(webRtrn){
+//     sendToServer(webRtrn);
+//   });
+// }
+//
+// function getPDF(cb){
+//   var pdf = document.forms.namedItem("contractorForm");
+//   var formPage = new FormData(pdf);
+//   var url = "http://pdfcrowd.com/api/pdf/convert/html/";
+//
+//   var xhr = new XMLHttpRequest();
+//   xhr.open("POST", url, true);
+//   xhr.setRequestHeader("Content-type", "multipart/form-data");
+//   xhr.onreadystatechange = function(){
+//     if (xhr.readyState === 4 && xhr.status === 200){
+//       var y = xhr.responseText;
+//       console.log(y);
+//       console.log("Sent Successfully")
+//       cb(y);
+//     } else {
+//       console.log(xhr.responseText);
+//     }
+//   };
+//   xhr.send(formPage);
+//   console.log(formPage);
+//   return false;
+// }
+//
+// function sendToServer(webRtrn){
+//   var x = webRtrn;
+//
+//
+// }
+
 
 function confirmEmail() {
   var email = document.forms["contractorForm"]['eAddress'].value;

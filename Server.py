@@ -1,7 +1,8 @@
 import os
 import random
-from flask import Flask, redirect, request, render_template
+from flask import Flask, redirect, request, render_template, url_for
 import sqlite3
+import pdfcrowd
 
 DATABASE = "sql/client_information.db"
 CV_ALLOWED_EXTENSIONS = set(['doc', 'doc', 'docx'])
@@ -9,10 +10,12 @@ PIC_ALLOWED_EXTENSIONS = set(['png', 'PNG', 'jpg', 'jpeg', 'gif'])
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 CV_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/cvs')
 PIC_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/pictures')
+PDF_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/pdfs')
 
 app = Flask(__name__)
 app.config['CV_UPLOAD_FOLDER'] = CV_UPLOAD_FOLDER
 app.config['PIC_UPLOAD_FOLDER'] = PIC_UPLOAD_FOLDER
+app.config['PDF_UPLOAD_FOLDER'] = PDF_UPLOAD_FOLDER
 
 def allowedFile(filename, filetype):
     ext = filename.rsplit('.',1)[1]
@@ -37,7 +40,7 @@ def loginToForm():
         if userName == 'admin' and password == 'admin' and uniqueID == '555':
             return render_template('admin.html')
 
-@app.route("/Form", methods=['POST', 'GET'])
+@app.route("/Form", methods=['GET', 'POST'])
 def addContractorDetails():
     if request.method == 'GET':
         return render_template('form.html')
@@ -56,6 +59,17 @@ def addContractorDetails():
             valuelist.append(request.form.get(i, default="Error"))
         userID = random.randint(0, 9999)
         print("inserting contractor " + valuelist[1])
+        # try:
+        #     client = pdfcrowd.Client("C1717381", "369b0be957d2d9c4f55af0a9ab8b7024")
+        #
+        #     filename = pdfFilename('PDF')
+        #     output_file = open(filename, 'wb')
+        #     client.convertFile('templates/form.html', output_file)
+        #     output_file.close()
+        #
+        # except Exception as why:
+        #     print('Failed: ' + str(why))
+
         try:
             conn = sqlite3.connect(DATABASE)
             cur = conn.cursor()
@@ -136,6 +150,17 @@ def secureFilename(filename, filetype):
     last = request.form.get('surname')
     main = str(first) + str(last) + filetype +"."+ filename.rsplit('.',1)[1]
     return main
+
+def pdfFilename(filetype):
+    first = request.form.get('firstName')
+    last = request.form.get('surname')
+    main = str(first) + str(last) + filetype +".pdf"
+    return main
+
+@app.route("/FormCompletion", methods=['GET'])
+def thankYouPage():
+    if request.method=='GET':
+        return render_template("form_completion.html")
 
 @app.route("/Admin", methods=['POST', 'GET'])
 def adminSearch():

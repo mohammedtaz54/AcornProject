@@ -20,7 +20,7 @@
       <hr>
       <p>Please fill out all input fields fully, and if you need any extra information, just hover over the field with your cursor</p>
       <hr>
-      <form id='contractorForm' name='contractorForm' method='post' autocomplete="on" enctype="multipart/form-data">
+      <form id='contractorForm' onsubmit="return sendData()" name='contractorForm' autocomplete="on" enctype="multipart/form-data">
         <section class="personalDetails">
           <h1> Step 1 - Personal Details</h1>
           <select class="title" name="title"  >
