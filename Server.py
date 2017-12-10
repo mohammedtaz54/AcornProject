@@ -16,7 +16,6 @@ app.config['PIC_UPLOAD_FOLDER'] = PIC_UPLOAD_FOLDER
 
 def allowedFile(filename, filetype):
     ext = filename.rsplit('.',1)[1]
-    print(ext)
     if filetype == 'CV':
         return '.' in filename and ext in CV_ALLOWED_EXTENSIONS
     if filetype =='PIC':

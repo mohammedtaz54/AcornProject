@@ -1,30 +1,18 @@
-function addForm() {
-  fieldlist = ["'title'", "'firstName'", "'surname'", "'gender'", "'dob'", "'niNumber'", "'eAddress'", "'contactNumber'",
-                   "'postCode'", "'addressLine1'", "'addressLine2'", "'addressLine3'", "'town'", "'emergContact'",
-                   "'emergContactNumber'", "'workReq'", "'quali'", "'nameOfCompany'", "'eligibility'",
-                   "'proofOfEligibility'", "'licence'", "'criminalConviction'", "'criminalDetails'", "'disability'",
-                   "'disabilityDetails'", "'refereeName1'", "'refereeJob1'", "'refereeComp1'", "'refereeAddress1'",
-                   "'refereeNum1'","'refereeEmail1'", "'refereeName2'", "'refereeJob2'", "'refereeComp2'", "'refereeNum2'",
-                   "'refereeAddress2'", "'refereeEmail2'", "'userName'", "'password'"]
-  params =""
-  for (i in fieldlist) {
-    params += i+"="+document.forms["contractorForm"][i].value+"&";
-  }
-  cvFile = document.forms["contractorForm"]['CV'];
-  picFile = document.forms["contractorForm"]['profileImage'];
-  xhttp.open('POST', '/Form', true); // true is asynchronous
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.onload = function() {
-    if (xhttp.readyState === 4 && xhttp.status === 200) {
-        console.log(xhttp.responseText);
-      } else {
-        console.error(xhttp.statusText);
-      }
-    };
-    xhttp.send(params);
-    xhttp.send(cvFile);
-    xhttp.send(picFile);
-    return false;
+function sendData(){
+  var form = document.forms.namedItem("contractorForm");
+  var data = new FormData(form);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/Form', true);
+  xhr.onload = function(){
+    if (xhr.readyState === 4 && xhr.status === 200){
+      console.log(xhr.responseText);
+    } else {
+      console.log(xhr.responseText);
+    }
+  };
+  xhr.send(data);
+  return false;
 }
 
 function confirmEmail() {
@@ -34,9 +22,6 @@ function confirmEmail() {
     alert("Sorry, but your emails don't seem to match.");
     document.forms["contractorForm"]['eAddress'].style.borderColor="red";
     document.forms["contractorForm"]['confirmEAddress'].style.borderColor="red";
-  } else{
-    email.style.borderColor="rgb(112,111,111)";
-    confemail.style.borderColor="rgb(112,111,111)";
   }
 }
 
@@ -47,9 +32,6 @@ function confirmPasswords() {
     alert("Sorry, but your passwords don't seem to match.");
     document.forms["contractorForm"]['password'].style.borderColor="red";
     document.forms["contractorForm"]['confirmPassword'].style.borderColor="red";
-  } else{
-    pass.style.borderColor="rgb(112,111,111)";
-    confpass.style.borderColor="rgb(112,111,111)";
   }
 }
 
