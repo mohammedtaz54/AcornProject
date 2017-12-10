@@ -34,11 +34,29 @@ def loginToForm():
     if request.method=='GET':
         return render_template('login.html')
     if request.method=='POST':
-        userName = request.form.get('userName', default="Error")
-        password = request.form.get('password', default="Error")
-        uniqueID = request.form.get('uniqueID', default="Error")
-        if userName == 'admin' and password == 'admin' and uniqueID == '555':
+        userNa = request.form.get('userName', default="Error")
+        passWo = request.form.get('password', default="Error")
+        uniqueID = request.form.get('uniqueID', default="Error")#
+        print('1')
+        if userNa == 'admin' and passWo == 'admin' and uniqueID == '555':
             return render_template('admin.html')
+        try:
+            conn = sqlite3.connect(DATABASE)
+            print('2')
+            cur = conn.cursor()
+            print('3')
+            cur.execute('SELECT * FROM accountAndUploads WHERE userName = "%s" AND password = "%s" '%(userNa,passWo))
+            print('4')
+            if cur.fetchone() is not None:
+                print('5')
+                return render_template('updateInfo.html')
+            else:
+                print ("error")
+        except:
+            print("EError")
+            conn.close
+        finally:
+            conn.close()
 
 @app.route("/Form", methods=['GET', 'POST'])
 def addContractorDetails():
