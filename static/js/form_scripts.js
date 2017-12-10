@@ -31,22 +31,22 @@ function confirmEmail() {
   var email = document.forms["contractorForm"]['eAddress'].value;
   var confemail = document.forms["contractorForm"]['confirmEAddress'].value;
   if(email != confemail) {
-    alert('Email Not Matching!');
-    email.style.borderColor="red";
-    confemail.style.borderColor="red";
+    alert("Sorry, but your emails don't seem to match.");
+    document.forms["contractorForm"]['eAddress'].style.borderColor="red";
+    document.forms["contractorForm"]['confirmEAddress'].style.borderColor="red";
   } else{
     email.style.borderColor="rgb(112,111,111)";
     confemail.style.borderColor="rgb(112,111,111)";
   }
 }
 
-function confirmPassword() {
+function confirmPasswords() {
   var pass = document.forms["contractorForm"]['password'].value;
   var confpass = document.forms["contractorForm"]['confirmPassword'].value;
   if(pass != confpass) {
-    alert('Passwords Not Matching!');
-    pass.style.borderColor="red";
-    confpass.style.borderColor="red";
+    alert("Sorry, but your passwords don't seem to match.");
+    document.forms["contractorForm"]['password'].style.borderColor="red";
+    document.forms["contractorForm"]['confirmPassword'].style.borderColor="red";
   } else{
     pass.style.borderColor="rgb(112,111,111)";
     confpass.style.borderColor="rgb(112,111,111)";
