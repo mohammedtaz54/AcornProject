@@ -5,13 +5,14 @@
 <html lang=en>
   <head>
     <title> Acorn Recuritment </title>
+    <script src="../static/js/admin_scripts.js"></script>
     <link rel="stylesheet" type="text/css" href="..\static\css\main.css">
     <link rel="stylesheet" type="text/css" href="..\static\css\admin.css">
     <link rel="shortcut icon" type="image/png" href="..\static\acorn_res\Logos\favicon.ico"/>
     <style> #map {height: 400px; width: 400px;}</style>
   </head>
 
-  <body>
+  <body onload="return initMap({{data}})">
 
     <header class="acornHeader">
       <img id="logo" src="..\static\acorn_res\Logos\PNGs\acorn_logo.png" alt="Image of the Acorn Logo">
@@ -33,25 +34,8 @@
         <button type="submit">Submit Search</button>
       </form>
     </main>
-
-    <script>
-      function initMap() {
-        var cardiff = {lat: 51.481, lng: -3.180};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: cardiff
-        });
-        var marker = new google.maps.Marker({
-          position: cardiff,
-          map: map
-        });
-      }
-    </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDxopG0a_TsLMCH16JKd6xhKlndLsPKL4&callback=initMap">
     </script>
-
   </body>
-
-
 </html>

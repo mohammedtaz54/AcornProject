@@ -143,17 +143,18 @@ def adminSearch():
     if request.method == 'GET':
         conn = sqlite3.connect(DATABASE)
         cur = conn.cursor()
-        cur.execute("SELECT postCode FROM form_data")
+        cur.execute("SELECT postCode FROM contactInformation")
         data = cur.fetchall()
         usableData = [x[0] for x in data]
-        print(usableData)
-        return render_template('admin.html',data=usableData)
+        jsonString = {"postcodes": usableData}
+        print(jsonString)
+        return render_template('admin.html',data=jsonString)
     if request.method == 'POST':
         try:
             surname = request.form.get('surname', default="Error")
             conn = sqlite3.connect(DATABASE)
             cur = conn.cursor()
-            cur.execute("SELECT * FROM form_data WHERE surname=?;", [surname])
+            cur.execute("SELECT * FROM personalDetails WHERE surname=?;", [surname])
             data = cur.fetchall()
             print(data)
         except:
