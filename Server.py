@@ -1,8 +1,8 @@
 import os
 import random
-from flask import Flask, redirect, request, render_template, url_for, make_response
+from flask import Flask, redirect, request, render_template, url_for, make_response, g, session
 import sqlite3
-import pdfcrowd
+
 
 DATABASE = "sql/client_information.db"
 CV_ALLOWED_EXTENSIONS = set(['doc', 'doc', 'docx'])
@@ -28,6 +28,53 @@ def allowedFile(filename, filetype):
 def landingPage():
     if request.method=='GET':
         return render_template('landing_page.html')
+
+########################################
+
+
+app.secret_key = os.urandom(24)
+
+@app.route('/Login', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        session.pop('user', None)
+
+        if request.form['password'] == 'password':
+            session['user'] = request.form['userName']
+            return redirect(url_for('protected'))
+
+    return render_template('login.html')
+
+@app.route('/protected')
+def protected():
+    if g.user:
+        return render_template('admin.html')
+
+    return redirect(url_for('getsession'))
+
+@app.before_request
+def before_request():
+    g.user = None
+    if 'user' in session:
+        g.user = session['user']
+
+@app.route('/getsession')
+def getsession():
+    if 'user' in session:
+        return session['user']
+
+    return 'Sorry you are not logged in'
+
+@app.route('/dropsession')
+def dropsession():
+    session.pop('user', None)
+    return 'Signed out'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+########################################
 
 @app.route("/Login", methods=['POST', 'GET'])
 def loginToForm():
@@ -57,6 +104,8 @@ def loginToForm():
             finally:
                 conn.close()
                 return redirect('/UpdateDetails')
+
+
 
 @app.route("/Form", methods=['GET', 'POST'])
 def addContractorDetails():
