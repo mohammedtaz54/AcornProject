@@ -2,7 +2,7 @@ import os
 import random
 from flask import Flask, redirect, request, render_template, url_for, make_response
 import sqlite3
-#import pdfcrowd
+import pdfcrowd
 
 DATABASE = "sql/client_information.db"
 CV_ALLOWED_EXTENSIONS = set(['doc', 'doc', 'docx'])
@@ -36,8 +36,7 @@ def loginToForm():
     if request.method=='POST':
         userName = request.form.get('userName', default="Error")
         password = request.form.get('password', default="Error")
-        uniqueID = request.form.get('uniqueID', default="Error")
-        if userName == 'admin' and password == 'admin' and uniqueID == '555':
+        if userName == 'admin' and password == 'admin':
             return redirect('/Admin')
         else:
             try:
