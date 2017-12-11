@@ -8,48 +8,14 @@ function sendData(){
     if (xhr.readyState === 4 && xhr.status === 200){
       console.log(xhr.responseText);
       if (xhr.responseText.includes("<head>")) window.location ="/FormCompletion";
+      if (xhr.responseText.includes("Email")) alert("Sorry, that email address has already been used");
     } else {
       console.log(xhr.responseText);
     }
   };
   xhr.send(data);
   return false;
-}
-
-//   getPDF(function(webRtrn){
-//     sendToServer(webRtrn);
-//   });
-// }
-//
-// function getPDF(cb){
-//   var pdf = document.forms.namedItem("contractorForm");
-//   var formPage = new FormData(pdf);
-//   var url = "http://pdfcrowd.com/api/pdf/convert/html/";
-//
-//   var xhr = new XMLHttpRequest();
-//   xhr.open("POST", url, true);
-//   xhr.setRequestHeader("Content-type", "multipart/form-data");
-//   xhr.onreadystatechange = function(){
-//     if (xhr.readyState === 4 && xhr.status === 200){
-//       var y = xhr.responseText;
-//       console.log(y);
-//       console.log("Sent Successfully")
-//       cb(y);
-//     } else {
-//       console.log(xhr.responseText);
-//     }
-//   };
-//   xhr.send(formPage);
-//   console.log(formPage);
-//   return false;
-// }
-//
-// function sendToServer(webRtrn){
-//   var x = webRtrn;
-//
-//
-// }
-
+}rgb(112,111,111)
 
 function confirmEmail() {
   var email = document.forms["contractorForm"]['eAddress'].value;
@@ -58,7 +24,10 @@ function confirmEmail() {
     alert("Sorry, but your emails don't seem to match.");
     document.forms["contractorForm"]['eAddress'].style.borderColor="red";
     document.forms["contractorForm"]['confirmEAddress'].style.borderColor="red";
-  }
+} else {
+    document.forms["contractorForm"]['eAddress'].style.borderColor="rgb(112,111,111)";
+    document.forms["contractorForm"]['confirmEAddress'].style.borderColor="rgb(112,111,111)";
+    }
 }
 
 function confirmPasswords() {
@@ -68,7 +37,10 @@ function confirmPasswords() {
     alert("Sorry, but your passwords don't seem to match.");
     document.forms["contractorForm"]['password'].style.borderColor="red";
     document.forms["contractorForm"]['confirmPassword'].style.borderColor="red";
-  }
+} else {
+    document.forms["contractorForm"]['password'].style.borderColor="rgb(112,111,111)";
+    document.forms["contractorForm"]['confirmPassword'].style.borderColor="rgb(112,111,111)";
+    }
 }
 
 function agreement() {

@@ -73,67 +73,53 @@ def addContractorDetails():
         valuelist = []
         for i in fieldlist:
             valuelist.append(request.form.get(i, default="Error"))
-        userID = random.randint(0, 9999)
         print("inserting contractor " + valuelist[1])
-        # try:
-        #     client = pdfcrowd.Client("C1717381", "369b0be957d2d9c4f55af0a9ab8b7024")
-        #
-        #     filename = pdfFilename('PDF')
-        #     output_file = open(filename, 'wb')
-        #     client.convertFile('templates/form.html', output_file)
-        #     output_file.close()
-        #
-        # except Exception as why:
-        #     print('Failed: ' + str(why))
 
-        try:
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO personalDetails ('userID', 'title', 'firstName', 'surname', 'gender',\
-                                     'dob', 'niNumber') VALUES (?,?,?,?,?,?,?)", (userID, valuelist[0],valuelist[1],\
-                                    valuelist[2], valuelist[3], valuelist[4],valuelist[5]))
-            conn.commit()
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO contactInformation ('userID', 'eAddress', 'contactNumber','postCode', 'addressLine1',\
-                                       'addressLine2', 'addressLine3', 'town', 'emergContact','emergContactNumber')\
-                                        VALUES (?,?,?,?,?,?,?,?,?,?)", (userID, valuelist[6],valuelist[7], valuelist[8],\
-                                        valuelist[9],valuelist[10],valuelist[11], valuelist[12], valuelist[13], valuelist[14]))
-            conn.commit()
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO workInformation ('userID', 'workReq', 'quali', 'nameOfCompany')\
-                                        VALUES (?,?,?,?)", (userID, valuelist[15], valuelist[16], valuelist[17]))
-            conn.commit()
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO extendedInformation ('userID', 'eligibility', 'proofOfEligibility', 'licence',\
-                                       'criminalConviction', 'criminalDetails', 'disability','disabilityDetails')\
-                                        VALUES (?,?,?,?,?,?,?,?)", (userID, valuelist[18], valuelist[19],valuelist[20],\
-                                        valuelist[21],valuelist[22], valuelist[23], valuelist[24]))
-            conn.commit()
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            res = [(userID, valuelist[25],valuelist[26],valuelist[27],valuelist[28],valuelist[29],valuelist[30]),(userID,valuelist[31],valuelist[32],valuelist[33],valuelist[34],valuelist[35],valuelist[36])]
-            cur.executemany("INSERT INTO referees ('userID', 'refereeName', 'refereeJob', 'refereeCompany',\
-                                        'refereeAddress', 'refereePhoneNumber', 'refereeEmail')\
-                                        VALUES (?,?,?,?,?,?,?)", res)
-            conn.commit()
-            conn = sqlite3.connect(DATABASE)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO accountAndUploads ('userID', 'userName', 'password', 'cvFilePath','picFilePath')\
-                                        VALUES (?,?,?,?,?)", (userID, valuelist[37], valuelist[38], cvPath, picPath))
-            conn.commit()
-            msg = "Record sucessfully added"
-        except Exception as e:
-             conn.rollback()
-             msg = "Error in insert operation: " + str(e)
-        finally:
-            conn.close()
-            if msg == "Record sucessfully added":
-                return render_template("form_completion.html")
-            else:
-                return msg
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT eAddress FROM contactInformation")
+        data = cur.fetchall()
+        if request.form.get('eAddress') in data:
+            try:
+                conn = sqlite3.connect(DATABASE)
+                cur = conn.cursor()
+                cur.execute("INSERT INTO personalDetails ('userID', 'title', 'firstName', 'surname', 'gender',\
+                                         'dob', 'niNumber') VALUES (?,?,?,?,?,?,?)", (userID, valuelist[0],valuelist[1],\
+                                        valuelist[2], valuelist[3], valuelist[4],valuelist[5]))
+
+                cur.execute("INSERT INTO contactInformation ('userID', 'eAddress', 'contactNumber','postCode', 'addressLine1',\
+                                           'addressLine2', 'addressLine3', 'town', 'emergContact','emergContactNumber')\
+                                            VALUES (?,?,?,?,?,?,?,?,?,?)", (userID, valuelist[6],valuelist[7], valuelist[8],\
+                                            valuelist[9],valuelist[10],valuelist[11], valuelist[12], valuelist[13], valuelist[14]))
+
+                cur.execute("INSERT INTO workInformation ('userID', 'workReq', 'quali', 'nameOfCompany')\
+                                            VALUES (?,?,?,?)", (userID, valuelist[15], valuelist[16], valuelist[17]))
+
+                cur.execute("INSERT INTO extendedInformation ('userID', 'eligibility', 'proofOfEligibility', 'licence',\
+                                           'criminalConviction', 'criminalDetails', 'disability','disabilityDetails')\
+                                            VALUES (?,?,?,?,?,?,?,?)", (userID, valuelist[18], valuelist[19],valuelist[20],\
+                                            valuelist[21],valuelist[22], valuelist[23], valuelist[24]))
+
+                res = [(userID, valuelist[25],valuelist[26],valuelist[27],valuelist[28],valuelist[29],valuelist[30]),(userID,valuelist[31],valuelist[32],valuelist[33],valuelist[34],valuelist[35],valuelist[36])]
+                cur.executemany("INSERT INTO referees ('userID', 'refereeName', 'refereeJob', 'refereeCompany',\
+                                            'refereeAddress', 'refereePhoneNumber', 'refereeEmail')\
+                                            VALUES (?,?,?,?,?,?,?)", res)
+
+                cur.execute("INSERT INTO accountAndUploads ('userID', 'userName', 'password', 'cvFilePath','picFilePath')\
+                                            VALUES (?,?,?,?,?)", (userID, valuelist[37], valuelist[38], cvPath, picPath))
+                conn.commit()
+                msg = "Record sucessfully added"
+            except Exception as e:
+                 conn.rollback()
+                 msg = "Error in insert operation: " + str(e)
+            finally:
+                conn.close()
+                if msg == "Record sucessfully added":
+                    return render_template("form_completion.html")
+                else:
+                    return msg
+        else:
+            return "Email already used"
 
 def cvUpload():
     if 'CV' not in request.files:

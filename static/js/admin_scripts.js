@@ -30,13 +30,10 @@ function longLat(map,webRtrn) {
   var x = webRtrn.result
   for (var i=0; i<x.length;i++){
     var y = x[i].result;
-    console.log(y.latitude);
-    console.log(y.longitude);
     var marker = new google.maps.Marker({
       position: {lat:y.latitude, lng:y.longitude},
       map: map
     });
     marker.setMap(map);
   }
-
 }
