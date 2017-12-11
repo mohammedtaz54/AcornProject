@@ -1,8 +1,8 @@
 import os
 import random
-from flask import Flask, redirect, request, render_template, url_for
+from flask import Flask, redirect, request, render_template, url_for, make_response
 import sqlite3
-import pdfcrowd
+#import pdfcrowd
 
 DATABASE = "sql/client_information.db"
 CV_ALLOWED_EXTENSIONS = set(['doc', 'doc', 'docx'])
@@ -43,18 +43,21 @@ def loginToForm():
             try:
                 conn = sqlite3.connect(DATABASE)
                 cur = conn.cursor()
-                cur.execute('SELECT * FROM accountAndUploads WHERE userName = "%s" AND password = "%s" '%(userName,password))
-                if cur.fetchone() is not None:
-                    return render_template('updateInfo.html')
-                    msg = "User has been logged in sucessfully"
+                cur.execute('SELECT * FROM accountAndUploads WHERE userName = "%s" AND password = "%s"' %(userName,password))
+                data = cur.fetchone()
+                userID = int(data[0])
+                print(userID)
+                if data is not None:
+                    resp = make_response(render_template('updateInfo.html'))
+                    resp.set_cookie('userID', userID)
+                    return resp
                 else:
                     msg = "Username or password is incorrect"
             except:
                 conn.rollback()
-                msg = "Error in retrieval operation: "
             finally:
                 conn.close()
-                return msg
+                return redirect('/UpdateDetails')
 
 @app.route("/Form", methods=['GET', 'POST'])
 def addContractorDetails():
@@ -193,6 +196,21 @@ def adminSearch():
 @app.route('/Email')
 def email():
     return render_template('inProgressPages/emailing_page.html')
+
+@app.route('/UpdateDetails', methods=['GET', 'POST'])
+def UpdateDetails():
+    conn = sqlite3.connect(DATABASE)
+    cur = conn.cursor()
+    userID = request.cookies.get('userID')
+    print (userID)
+    if request.method == 'GET':
+        cur.execute('SELECT * FROM personalDetails WHERE userID="%s" ' %(userID))
+        data = cur.fetchall()
+        print(data)
+        return render_template('updateInfo.html')
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
