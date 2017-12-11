@@ -38,7 +38,7 @@ def loginToForm():
         password = request.form.get('password', default="Error")
         uniqueID = request.form.get('uniqueID', default="Error")
         if userName == 'admin' and password == 'admin' and uniqueID == '555':
-            return render_template('admin.html')
+            return redirect('/Admin')
         else:
             try:
                 conn = sqlite3.connect(DATABASE)
@@ -82,34 +82,39 @@ def addContractorDetails():
         cur = conn.cursor()
         cur.execute("SELECT eAddress FROM contactInformation")
         data = cur.fetchall()
-        if request.form.get('eAddress') in data:
+        if request.form.get('eAddress') not in data:
             try:
                 conn = sqlite3.connect(DATABASE)
                 cur = conn.cursor()
-                cur.execute("INSERT INTO personalDetails ('userID', 'title', 'firstName', 'surname', 'gender',\
-                                         'dob', 'niNumber') VALUES (?,?,?,?,?,?,?)", (userID, valuelist[0],valuelist[1],\
+                cur.execute("INSERT INTO personalDetails ('title', 'firstName', 'surname', 'gender',\
+                                         'dob', 'niNumber') VALUES (?,?,?,?,?,?)", (valuelist[0],valuelist[1],\
                                         valuelist[2], valuelist[3], valuelist[4],valuelist[5]))
 
-                cur.execute("INSERT INTO contactInformation ('userID', 'eAddress', 'contactNumber','postCode', 'addressLine1',\
+                cur.execute("INSERT INTO contactInformation ('eAddress', 'contactNumber','postCode', 'addressLine1',\
                                            'addressLine2', 'addressLine3', 'town', 'emergContact','emergContactNumber')\
-                                            VALUES (?,?,?,?,?,?,?,?,?,?)", (userID, valuelist[6],valuelist[7], valuelist[8],\
+                                            VALUES (?,?,?,?,?,?,?,?,?)", (valuelist[6],valuelist[7], valuelist[8],\
                                             valuelist[9],valuelist[10],valuelist[11], valuelist[12], valuelist[13], valuelist[14]))
 
-                cur.execute("INSERT INTO workInformation ('userID', 'workReq', 'quali', 'nameOfCompany')\
-                                            VALUES (?,?,?,?)", (userID, valuelist[15], valuelist[16], valuelist[17]))
+                cur.execute("SELECT userID FROM contactInformation WHERE eAddress=?;", [request.form.get('eAddress')])
+                userID = cur.fetchall()
+                userID = [x[0] for x in userID]
+                userID = userID[0]
 
-                cur.execute("INSERT INTO extendedInformation ('userID', 'eligibility', 'proofOfEligibility', 'licence',\
+                cur.execute("INSERT INTO workInformation ('workReq', 'quali', 'nameOfCompany')\
+                                            VALUES (?,?,?)", (valuelist[15], valuelist[16], valuelist[17]))
+
+                cur.execute("INSERT INTO extendedInformation ('eligibility', 'proofOfEligibility', 'licence',\
                                            'criminalConviction', 'criminalDetails', 'disability','disabilityDetails')\
-                                            VALUES (?,?,?,?,?,?,?,?)", (userID, valuelist[18], valuelist[19],valuelist[20],\
+                                            VALUES (?,?,?,?,?,?,?)", (valuelist[18], valuelist[19],valuelist[20],\
                                             valuelist[21],valuelist[22], valuelist[23], valuelist[24]))
 
-                res = [(userID, valuelist[25],valuelist[26],valuelist[27],valuelist[28],valuelist[29],valuelist[30]),(userID,valuelist[31],valuelist[32],valuelist[33],valuelist[34],valuelist[35],valuelist[36])]
-                cur.executemany("INSERT INTO referees ('userID', 'refereeName', 'refereeJob', 'refereeCompany',\
+                res = [(userID, valuelist[25],valuelist[26],valuelist[27],valuelist[28],valuelist[29],valuelist[30]),(userID, valuelist[31],valuelist[32],valuelist[33],valuelist[34],valuelist[35],valuelist[36])]
+                cur.executemany("INSERT INTO referees ('userID','refereeName', 'refereeJob', 'refereeCompany',\
                                             'refereeAddress', 'refereePhoneNumber', 'refereeEmail')\
                                             VALUES (?,?,?,?,?,?,?)", res)
 
-                cur.execute("INSERT INTO accountAndUploads ('userID', 'userName', 'password', 'cvFilePath','picFilePath')\
-                                            VALUES (?,?,?,?,?)", (userID, valuelist[37], valuelist[38], cvPath, picPath))
+                cur.execute("INSERT INTO accountAndUploads ('userName', 'password', 'cvFilePath','picFilePath')\
+                                            VALUES (?,?,?,?)", (valuelist[37], valuelist[38], cvPath, picPath))
                 conn.commit()
                 msg = "Record sucessfully added"
             except Exception as e:

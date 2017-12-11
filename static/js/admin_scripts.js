@@ -15,7 +15,7 @@ function getCoordinates(postcodes, cb){
   var url = "https://api.postcodes.io/postcodes?filter=longitude,latitude";
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/json");
-  xhr.onreadystatechange = function () {
+  xhr.onload = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
           var json = JSON.parse(xhr.responseText);
           cb(json);

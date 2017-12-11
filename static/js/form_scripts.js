@@ -8,14 +8,14 @@ function sendData(){
     if (xhr.readyState === 4 && xhr.status === 200){
       console.log(xhr.responseText);
       if (xhr.responseText.includes("<head>")) window.location ="/FormCompletion";
-      if (xhr.responseText.includes("Email")) alert("Sorry, that email address has already been used");
+      if (xhr.responseText.includes("Email already used")) alert("Sorry, that email address has already been used");
     } else {
       console.log(xhr.responseText);
     }
   };
   xhr.send(data);
   return false;
-}rgb(112,111,111)
+}
 
 function confirmEmail() {
   var email = document.forms["contractorForm"]['eAddress'].value;
