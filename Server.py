@@ -10,12 +10,10 @@ PIC_ALLOWED_EXTENSIONS = set(['png', 'PNG', 'jpg', 'jpeg', 'gif'])
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 CV_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/cvs')
 PIC_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/pictures')
-PDF_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/pdfs')
 
 app = Flask(__name__)
 app.config['CV_UPLOAD_FOLDER'] = CV_UPLOAD_FOLDER
 app.config['PIC_UPLOAD_FOLDER'] = PIC_UPLOAD_FOLDER
-app.config['PDF_UPLOAD_FOLDER'] = PDF_UPLOAD_FOLDER
 
 def allowedFile(filename, filetype):
     ext = filename.rsplit('.',1)[1]
@@ -29,27 +27,30 @@ def landingPage():
     if request.method=='GET':
         return render_template('landing_page.html')
 
-########################################
-
-
 app.secret_key = os.urandom(24)
 
 @app.route('/Login', methods=['GET', 'POST'])
 def index():
+    if request.method=='GET':
+        return render_template('login.html')
     if request.method == 'POST':
         session.pop('user', None)
-
         if request.form['password'] == 'password':
             session['user'] = request.form['userName']
             return redirect(url_for('protected'))
-
     return render_template('login.html')
 
 @app.route('/protected')
 def protected():
     if g.user:
-        return render_template('admin.html')
-
+        conn = sqlite3.connect(DATABASE)
+        cur = conn.cursor()
+        cur.execute("SELECT postCode FROM contactInformation")
+        data = cur.fetchall()
+        usableData = [x[0] for x in data]
+        jsonString = {"postcodes": usableData}
+        print(jsonString)
+        return render_template('admin.html',data=jsonString)
     return redirect(url_for('getsession'))
 
 @app.before_request
@@ -62,50 +63,12 @@ def before_request():
 def getsession():
     if 'user' in session:
         return session['user']
-
     return 'Sorry you are not logged in'
 
 @app.route('/dropsession')
 def dropsession():
     session.pop('user', None)
     return 'Signed out'
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-########################################
-
-@app.route("/Login", methods=['POST', 'GET'])
-def loginToForm():
-    if request.method=='GET':
-        return render_template('login.html')
-    if request.method=='POST':
-        userName = request.form.get('userName', default="Error")
-        password = request.form.get('password', default="Error")
-        if userName == 'admin' and password == 'admin':
-            return redirect('/Admin')
-        else:
-            try:
-                conn = sqlite3.connect(DATABASE)
-                cur = conn.cursor()
-                cur.execute('SELECT * FROM accountAndUploads WHERE userName = "%s" AND password = "%s"' %(userName,password))
-                data = cur.fetchone()
-                userID = int(data[0])
-                print(userID)
-                if data is not None:
-                    resp = make_response(render_template('updateInfo.html'))
-                    resp.set_cookie('userID', userID)
-                    return resp
-                else:
-                    msg = "Username or password is incorrect"
-            except:
-                conn.rollback()
-            finally:
-                conn.close()
-                return redirect('/UpdateDetails')
-
-
 
 @app.route("/Form", methods=['GET', 'POST'])
 def addContractorDetails():
@@ -134,7 +97,7 @@ def addContractorDetails():
             try:
                 conn = sqlite3.connect(DATABASE)
                 cur = conn.cursor()
-                cur.execute("INSERT INTO personalDetails ('title', 'firstName', 'surname', 'gender',\
+                cur.execute("INSERT INTO personalInformation ('title', 'firstName', 'surname', 'gender',\
                                          'dob', 'niNumber') VALUES (?,?,?,?,?,?)", (valuelist[0],valuelist[1],\
                                         valuelist[2], valuelist[3], valuelist[4],valuelist[5]))
 
@@ -147,6 +110,7 @@ def addContractorDetails():
                 userID = cur.fetchall()
                 userID = [x[0] for x in userID]
                 userID = userID[0]
+                print(userID)
 
                 cur.execute("INSERT INTO workInformation ('workReq', 'quali', 'nameOfCompany')\
                                             VALUES (?,?,?)", (valuelist[15], valuelist[16], valuelist[17]))
@@ -220,23 +184,14 @@ def thankYouPage():
     if request.method=='GET':
         return render_template("form_completion.html")
 
-@app.route("/Admin", methods=['POST', 'GET'])
+@app.route("/Admin", methods=['POST'])
 def adminSearch():
-    if request.method == 'GET':
-        conn = sqlite3.connect(DATABASE)
-        cur = conn.cursor()
-        cur.execute("SELECT postCode FROM contactInformation")
-        data = cur.fetchall()
-        usableData = [x[0] for x in data]
-        jsonString = {"postcodes": usableData}
-        print(jsonString)
-        return render_template('admin.html',data=jsonString)
     if request.method == 'POST':
         try:
             surname = request.form.get('surname', default="Error")
             conn = sqlite3.connect(DATABASE)
             cur = conn.cursor()
-            cur.execute("SELECT * FROM personalDetails WHERE surname=?;", [surname])
+            cur.execute("SELECT * FROM personalInformation WHERE surname=?;", [surname])
             data = cur.fetchall()
             print(data)
         except:
@@ -245,25 +200,6 @@ def adminSearch():
         finally:
             conn.close()
             return render_template('list_data.html', data = data)
-
-@app.route('/Email')
-def email():
-    return render_template('inProgressPages/emailing_page.html')
-
-@app.route('/UpdateDetails', methods=['GET', 'POST'])
-def UpdateDetails():
-    conn = sqlite3.connect(DATABASE)
-    cur = conn.cursor()
-    userID = request.cookies.get('userID')
-    print (userID)
-    if request.method == 'GET':
-        cur.execute('SELECT * FROM personalDetails WHERE userID="%s" ' %(userID))
-        data = cur.fetchall()
-        print(data)
-        return render_template('updateInfo.html')
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
