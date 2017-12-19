@@ -1,39 +1,42 @@
 function initMap(postcodes) {
-    var cardiff = {lat: 51.481, lng: -3.180};
-    var map = new google.maps.Map(document.getElementById('map'), {
+    let cardiff = {lat: 51.481, lng: -3.180};
+    let map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
       center: cardiff
     });
 
-    getCoordinates(postcodes, function(siteData){
-      longLat(map,siteData);
+    getCoordinates(postcodes, function(webReturn){
+      lngLat(map,webReturn);
     });
 }
 
-function getCoordinates(postcodes, cb){
-  var xhr = new XMLHttpRequest();
-  var url = "https://api.postcodes.io/postcodes?filter=longitude,latitude";
+function getCoordinates(postcodes, callBack){
+  let xhr = new XMLHttpRequest();
+  let url = "https://api.postcodes.io/postcodes?filter=longitude,latitude";
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/json");
-  xhr.onload = function () {
+  xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
           var json = JSON.parse(xhr.responseText);
-          cb(json);
+          console.log(json)
+          callBack(json);
       }
   };
-  var data = JSON.stringify(postcodes);
-  console.log(data);
-  xhr.send(data);
+  let postCodeData = JSON.stringify(postcodes);
+  console.log(postCodeData);
+  xhr.send(postCodeData);
 }
 
-function longLat(map,webRtrn) {
-  var x = webRtrn.result
+function lngLat(map,webReturn) {
+  let x = webReturn.result;
   for (var i=0; i<x.length;i++){
-    var y = x[i].result;
-    var marker = new google.maps.Marker({
-      position: {lat:y.latitude, lng:y.longitude},
-      map: map
-    });
-    marker.setMap(map);
+    let y = x[i].result;
+    if (y != null){
+        let marker = new google.maps.Marker({
+          position: {lat:y.latitude, lng:y.longitude},
+          map: map
+        });
+        marker.setMap(map);
+    }
   }
 }

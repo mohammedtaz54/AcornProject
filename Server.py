@@ -2,10 +2,11 @@ import os
 import random
 from flask import Flask, redirect, request, render_template, url_for, make_response, g, session
 import sqlite3
+import time
 
 
 DATABASE = "sql/client_information.db"
-CV_ALLOWED_EXTENSIONS = set(['doc', 'doc', 'docx'])
+CV_ALLOWED_EXTENSIONS = set(['doc', 'pdf', 'docx'])
 PIC_ALLOWED_EXTENSIONS = set(['png', 'PNG', 'jpg', 'jpeg', 'gif'])
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 CV_UPLOAD_FOLDER = os.path.join(APP_ROOT,'static/uploads/cvs')
@@ -49,7 +50,6 @@ def protected():
         data = cur.fetchall()
         usableData = [x[0] for x in data]
         jsonString = {"postcodes": usableData}
-        print(jsonString)
         return render_template('admin.html',data=jsonString)
     return redirect(url_for('getsession'))
 
@@ -184,7 +184,7 @@ def thankYouPage():
     if request.method=='GET':
         return render_template("form_completion.html")
 
-@app.route("/Admin", methods=['POST'])
+@app.route("/Admin", methods=['GET'])
 def adminSearch():
     if request.method == 'POST':
         try:
@@ -194,6 +194,7 @@ def adminSearch():
             cur.execute("SELECT * FROM personalInformation WHERE surname=?;", [surname])
             data = cur.fetchall()
             print(data)
+            return render_template('admin.html',data=jsonString)
         except:
             print('There was an error', data)
             conn.close()
